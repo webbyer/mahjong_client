@@ -1,0 +1,14 @@
+
+{
+	"command": 4012,
+    "hu": true,	
+    "forcehu": true,
+    "ting": [
+        4,		
+        7, 
+        9
+    ],
+    "mopai": 3,
+    "gangpais":[3,4]
+}
+

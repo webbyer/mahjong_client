@@ -1,0 +1,68 @@
+
+{
+    "command": 4017,
+    "nowround": 12,
+    "rounds": 16,
+    "huuid": 665478,
+    "dianpaouid": 161237,
+	"baocard": 9,
+	"guicard": 17,
+	"hutype": 1,
+    "user[0]": {
+        "winner": true,
+        "UID": 654892,
+        "nickname": "user nick name",
+        "wx_portrait": "head img url",
+        "handcards":[15,15,15,16,18],
+        "chicards":[1,2,3,4,5,6],
+        "pengcards":[18,18,18,23,23,23],
+        "gangcards":[3,3,3,3,8,8,8,8],
+        "roomscore": 128,
+        "huscore": 8,
+        "gangscore": 4,
+        "isbanker": true,
+        "tags": "\"aaa bb dd  daad  asdf  adsasdf\""
+    },
+    "user[1]": {
+        "isdiaopao": true,
+        "UID": 654892,
+        "nickname": "user nick name",
+        "wx_portrait": "head img url",
+        "handcards":[15,15,15,16,18],
+        "chicards":[1,2,3,4,5,6],
+        "pengcards":[18,18,18,23,23,23],
+        "gangcards":[3,3,3,3,8,8,8,8],        
+        "roomscore": 128,
+        "huscore": 8,
+        "gangscore": 4,
+        "isbanker": false,
+        "tags": "\"asdf fdsadf\""
+    },
+    "user[2]": {
+        "UID": 656392,
+        "nickname": "user nick name",
+        "wx_portrait": "head img url",
+        "handcards":[15,15,15,16,18],
+        "chicards":[1,2,3,4,5,6],
+        "pengcards":[18,18,18,23,23,23],
+        "gangcards":[3,3,3,3,8,8,8,8],        
+        "roomscore": 128,
+        "huscore": 8,
+        "gangscore": 4,
+        "isbanker": false,
+        "tags": "\"asd \""
+    },
+    "user[3]": {
+        "UID": 659892,
+        "nickname": "user nick name",
+        "wx_portrait": "head img url",
+        "handcards":[15,15,15,16,18],
+        "chicards":[1,2,3,4,5,6],
+        "pengcards":[18,18,18,23,23,23],
+        "gangcards":[3,3,3,3,8,8,8,8],        
+        "roomscore": 128,
+        "huscore": 8,
+        "gangscore": 4,
+        "isbanker": false
+    }
+}

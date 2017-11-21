@@ -1,0 +1,100 @@
+
+{
+    "command": 4001,
+    "room": {
+        "rules": "1,2,3,4,7",			//房间规则  见1003
+        "roomid": 325712,
+        "rounds": 16,
+        "nowround": 2,					//当前第几局
+        "basicraise": 3,				
+        "guicard": 1,					//会牌牌值
+        "qiangtoucard": 24				//墙头牌值  墙头的下一张牌就是会儿牌  也叫鬼牌、癞子、万能牌，可充当任意牌  但不能用它来吃牌，不能碰牌，也不能打出，只能放到手牌里	
+    },
+    "user1": {
+        "UID": 654892,
+        "nickname": "昵称",
+        "wx_portrait": "头像地址",
+        "isbanker": "是不是庄家",
+        "iscontroller": "当前是否控牌",
+        "ipaddress": "ip地址",
+        "score": "在本房间当前分数",
+        "playedcards": [
+            1,
+            2
+        ],
+        "showcards": [
+            3,
+            4,
+            5
+        ],
+        "angangcards": [
+            9
+        ],
+        "minggangcards": [
+            6,
+            3
+        ]
+    },
+	"user2": {
+        "UID": 212354,
+        "nickname": "昵称",
+        "wx_portrait": "头像地址",
+        "isbanker": "是不是庄家",
+        "iscontroller": "当前是否控牌",
+        "ipaddress": "ip地址",
+        "score": "在本房间当前分数",
+        "playedcards": [
+            1,
+            2
+        ],
+        "showcards": [
+            3,
+            4,
+            5
+        ],
+        "angangcards": [
+            9
+        ],
+        "minggangcards": [
+            6,
+            3
+        ]
+    },
+    "user3": {
+        "UID": 235623,
+        "nickname": "昵称",
+        "wx_portrait": "头像地址",
+        "isbanker": "是不是庄家",
+        "iscontroller": "当前是否控牌",
+        "ipaddress": "ip地址",
+        "score": "在本房间当前分数",
+        "playedcards": [
+            1,
+            2
+        ],
+        "showcards": [
+            3,
+            4,
+            5
+        ]
+    },
+    "user4: {
+        "UID": 64324,
+        "nickname": "昵称",
+        "wx_portrait": "头像地址",
+        "isbanker": "是不是庄家",
+        "iscontroller": "当前是否控牌",
+        "ipaddress": "ip地址",
+        "score": "在本房间当前分数",
+        "playedcards": [
+            1,
+            2
+        ],
+        "showcards": [
+            3,
+            4,
+            5
+        ]
+    },        
+    "myhandcards": "15,15,15,16,18"
+}

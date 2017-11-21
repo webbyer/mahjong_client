@@ -1,0 +1,17 @@
+
+{
+    "command": 1003,
+    "did": "85c5adcd-ec58-42a3-93da-d778cef60a19",
+    "roomsetting": {
+        "rounds": 16,
+        "playrule": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ],
+        "basicraise": 3
+    }
+}
