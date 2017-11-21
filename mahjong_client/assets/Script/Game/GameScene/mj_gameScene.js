@@ -418,7 +418,7 @@ cc.Class({
                     this.BaoCard.getComponent("CardSpr").initCard(data);
                 } else {
                     bk.active = true;
-                    card.active = false
+                    card.active = false;
                 }
             }
         }
