@@ -21,8 +21,12 @@ cc.Class({
     initCard(data) {
         this.id = data;
         let str = "";
-        this.suit = parseInt(data / 9) + 1;
-        this.num = data % 9 + 1;
+        if (data == -2) {
+            str = ""; // ab
+        }else {
+            this.suit = parseInt(data / 9) + 1;
+            this.num = data % 9 + 1;
+        }
         switch (this.suit ) {
             case cc.dd.gameCfg.CARD_SUIT.WAN: {
                 str = str + "wanzi_" + this.num;

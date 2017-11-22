@@ -23,10 +23,11 @@ cc.Class({
         cc.dd.soundMgr.init();
         cc.dd.userEvent.addObserver(this);
         cc.dd.net.addObserver(this);
+        this.setBtnLoginState(false);
         cc.dd.tipMgr.show("正在连接网络，请稍后...");
         cc.dd.net.connectNet(cc.dd.pubConst.HOST_STR, () => {
-            this.setBtnLoginState(true);
-            cc.dd.tipMgr.hide();
+            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REP);
+            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHECK_LOGIN_REP, "6SDF4ASD4GFAS4FG5ASD5F5Dsdf");
         });
     },
     onDestroy() {
@@ -55,10 +56,9 @@ cc.Class({
     // 设置登录按钮的状态
     setBtnLoginState(state) {
         if (this.BtnLogin) {
-            this.BtnLogin.active = state;
-            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REP);
-            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHECK_LOGIN_REP, "6SDF4ASD4GFAS4FG5ASD5F5Dsdf");
-            this.setBtnLoginInterateState(false);
+            this.BtnLogin.node.active = state;
+            this.CheckBox.node.parent.active = state;
+            this.setBtnLoginInterateState(state);
         } else {
             cc.log(`节点未绑定`);
         }
@@ -74,12 +74,14 @@ cc.Class({
         switch (event) {
             case cc.dd.userEvName.USER_LOGIN_SCU: {
                 cc.log(`登录成功`);
+                cc.dd.tipMgr.hide();
                 cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);
                 break;
             }
             case cc.dd.userEvName.USER_LOGIN_FAIL: {
                 cc.log('登录失败');
-                this.setBtnLoginInterateState(true);
+                cc.dd.tipMgr.hide();
+                this.setBtnLoginState(true);
                 break;
             }
             case cc.dd.gameCfg.EVENT.EVENT_GAME_STATE: { // 4002
