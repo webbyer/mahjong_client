@@ -200,7 +200,8 @@ cc.dd.checkForNewVersion = (iosVersion,androidVersion,data) => {
     if (cc.sys.isMobile) {
         cc.log("检测是否需要更新下载新版本");
         if (cc.sys.os == cc.sys.OS_ANDROID) {
-
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity", "readryToDownloadNewerVersion",
+            "(Ljava/lang/String;Ljava/lang/String;)V", androidVersion.toString(), data.androidupdateurl);
         }else {
             jsb.reflection.callStaticMethod("RootViewController", "readryToDownloadNewerVersion:whitDownloadLink:",iosVersion.toString(),data.iosupdateurl);
         }
