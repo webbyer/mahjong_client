@@ -35,7 +35,7 @@ const MJEventManager = cc.Class({
                 body.did = deviceid;
             }
         }else{
-            body.did = "7427107d-d571-494b-819b-7e001ebf7d3c";// 网页47194279-dfb8-4e35-9ba2-d13dd70028dc
+            body.did = "47194279-dfb8-4e35-9ba2-d13dd70028dc";// 网页
         }//26ee669399b2ee1b //7d5d9880-486b-45cf-9346-795954ba3968
 
         switch (event) {
@@ -142,10 +142,11 @@ const MJEventManager = cc.Class({
                 this.sendMessage(body);
                 break;
             }
-            // case cc.dd.gameCfg.GVOICE.GVOICE_MESSAGE_FINISH_PLAYING: {
-            //     cc.dd.soundMgr.resumeAllSounds();
-            //     break;
-            // }
+            case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP: {
+                body.roomserialnumber = data;
+                this.sendMessage(body);
+                break;
+            }
             default: {
                 cc.log(`unkown event: ${event}`);
             }
@@ -291,11 +292,15 @@ const MJEventManager = cc.Class({
                 cc.dd.room.saveMsg(msgId,msgData);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_USER_OFFLINE: {
+            case cc.dd.gameCfg.EVENT.EVENT_USER_OFFLINE: { // 用户调线
                 cc.dd.room.saveMsg(msgId,msgData);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_USER_BACKONLINE: {
+            case cc.dd.gameCfg.EVENT.EVENT_USER_BACKONLINE: { // 用户重新上线
+                cc.dd.room.saveMsg(msgId,msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REQ: { // 4023，总战绩查询的返回
                 cc.dd.room.saveMsg(msgId,msgData);
                 break;
             }

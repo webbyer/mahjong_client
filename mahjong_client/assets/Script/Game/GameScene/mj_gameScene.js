@@ -136,6 +136,7 @@ cc.Class({
         cc.dd.net.setCallBack(this);
     },
     onDestroy() {
+        cc.dd.room.roomserialnumber = null;
         this.unschedule(this.callback);
     },
 
@@ -179,6 +180,7 @@ cc.Class({
         const userList = this.sortUserList(data.myuid);
         cc.dd.roomEvent.setIsCache(false);
         cc.dd.cardMgr.setHuiPai(data.room.guicard);
+        cc.dd.room.roomserialnumber = data.room.roomserialnumber;
         // 相同IP地址需要显示
         if(userList.length > 1){
             let count = 0;
@@ -771,6 +773,7 @@ cc.Class({
     haiDiLao(data) {
         cc.dd.roomEvent.setIsCache(false);
         const localSeat = this.getLocalSeatByUserId(data.uid);
+        cc.dd.cardMgr.HideZoneOutCard();
         if (localSeat === 1) {
             if (data.forcehu) {
                 cc.log(`玩家必须胡牌`);
@@ -1074,5 +1077,15 @@ cc.Class({
     // 更新函数
     update() {
         cc.dd.updataPollFunc();
+    },
+    // 展示总战绩
+    showZongZhanJi(data) {
+        cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
+            const zzj = cc.instantiate(prefab);
+            // 还没有真实的数据 防crash
+            // zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
+            this.node.addChild(zzj);
+        });
+        this.node.parent.getChildByName("JieSuan").destroy();
     },
 });

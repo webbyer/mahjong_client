@@ -172,12 +172,16 @@ cc.Class({
                 cc.dd.user.updateAgentInfo(data.agent);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_USER_OFFLINE: {
+            case cc.dd.gameCfg.EVENT.EVENT_USER_OFFLINE: { // 用户掉线
                 this.node.getComponent("mj_gameScene").userDidOffline(data);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_USER_BACKONLINE: {
+            case cc.dd.gameCfg.EVENT.EVENT_USER_BACKONLINE: { // 用户重新上线
                 this.node.getComponent("mj_gameScene").userDidComebackOnline(data);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REQ: { // 4023,查询总战绩的返回
+                this.node.getComponent("mj_gameScene").showZongZhanJi(data);
                 break;
             }
             default: {

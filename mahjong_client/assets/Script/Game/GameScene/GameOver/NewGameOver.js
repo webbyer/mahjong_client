@@ -50,7 +50,12 @@ cc.Class({
         ReturnBtn: {
             default: null,
             type: cc.Node,
-            tooltip: "返回的按钮",
+            tooltip: "总战绩的按钮",
+        },
+        ReturnBtnTitle: {
+            default: null,
+            type: cc.Label,
+            tooltip: "总战绩按钮的label",
         },
         // GangPonitTitle: {
         //     default: null,
@@ -131,26 +136,37 @@ cc.Class({
         if (state) {
             this.ReturnBtn.active = true;
             this.NextBtn.active = false;
+            let countdown = 5;
+            this.callback = function () {
+                this.ReturnBtnTitle.string = "总战绩（" + countdown + "）";
+                countdown--;
+                if (countdown === 0) {
+                    this.unschedule(this.callback);
+                    this.returnBtnClick();
+                }
+            };
+            this.schedule(this.callback, 5);
         }else {
             this.NextBtn.active = true;
             this.ReturnBtn.active = false;
         }
     },
-    // 下一句监听事件
+    // 下一局监听事件
     nextBtnClick() {
         this.node.destroy();
         cc.dd.roomEvent.setIsCache(true);
         cc.dd.roomEvent.notifyCacheList();
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_START_NEXTROUND);
     },
-    // 返回监听的事件
+    // 总战绩点击监听的事件
     returnBtnClick() {
-        cc.log(`返回`);
-        cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_START_NEXTROUND);
-        cc.dd.soundMgr.stopAllSound();
-        cc.dd.Reload.loadDir("DirRes", () => {
-            cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);
-        });
+        cc.log(`总战绩`);
+        cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP,cc.dd.room.roomserialnumber);
+
+        // cc.dd.soundMgr.stopAllSound();
+        // cc.dd.Reload.loadDir("DirRes", () => {
+        //     cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);
+        // });
     },
     // 鬼牌
     initGuiCard(data) {
