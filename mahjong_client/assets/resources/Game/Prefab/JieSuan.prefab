@@ -1211,7 +1211,8 @@
     "_enabled": true,
     "Spr": {
       "__id__": 27
-    }
+    },
+    "id": -1
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -1699,7 +1700,8 @@
     "_enabled": true,
     "Spr": {
       "__id__": 43
-    }
+    },
+    "id": -1
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2807,7 +2809,7 @@
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "返回大厅",
+    "_N$string": "总战绩（5）",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -2964,7 +2966,9 @@
     "ReturnBtn": {
       "__id__": 84
     },
-    "GangPonitTitle": null
+    "ReturnBtnTitle": {
+      "__id__": 86
+    }
   },
   {
     "__type__": "cc.PrefabInfo",

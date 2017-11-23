@@ -37,6 +37,7 @@ const Room = cc.Class({
         _playerNodeArr: [], // 四玩家的节点数组
         _isFourZeroOneTwo: null, // 4012状态下点过不需要发送2002
         _curentChuPaiSeat: null, // 当前要出牌的座位号
+        roomserialnumber: null, // 当前房间唯一识别号
     },
     // 房间数据
     updataRoomData(data) {

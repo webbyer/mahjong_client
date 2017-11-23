@@ -207,3 +207,15 @@ cc.dd.checkForNewVersion = (iosVersion,androidVersion,data) => {
     }
 
 };
+
+// 分享总战绩到微信朋友
+cc.dd.shareZongZhanJiToWXFriends = () => {
+    if (cc.sys.isMobile) {
+        cc.log("分享总战绩到微信朋友");
+        if (cc.sys.os == cc.sys.OS_ANDROID) {
+
+        } else {
+            // cc.log("调用原生方法截屏去");
+        }
+    }
+};
