@@ -164,17 +164,24 @@ cc.Class({
         // this.scheduleOnce(() => {
 
         // });
+        
+        //如果在听、过状态选择了过那么可以出牌，因为显示操作按钮的时候已经禁止用户手动出牌
+        cc.log(`isOnlyTing:`+event.target.isOnlyTing);
         if (event.target.isOnlyTing) {
+        
             //过牌不应该影响能否出牌  但这里不置为true会有问题
             cc.dd.cardMgr.setIsCanOutCard(true);
             cc.dd.cardMgr.setTingList(null);
             return;
         }
+        //这里暂时不知道是什么意思,似乎是自己摸牌后如果有杠、胡的操作会将customData置为true
+        cc.log(`customData:`+event.target.customData);
         if (event.target.customData) {
             //过牌不应该影响能否出牌 
             cc.dd.cardMgr.setIsCanOutCard(false);
 
             if (cc.dd.cardMgr.getIsTing()) {
+                cc.log(`customData = true isting = true moCard=`+moCard);
                 const moCard = cc.dd.cardMgr.getMoCard();
                 if (moCard) {
                     const moNode = this.node.getComponent("mj_gameScene").playerArr[0].
@@ -193,11 +200,19 @@ cc.Class({
                     }, 0.5);
                     return;
                 }
+            }else{
+                //未听牌状态过牌后要允许用户手动出牌
+                cc.dd.cardMgr.setIsCanOutCard(true);
             }
         } else {
             // cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_GUOCARD_REP);
+
         }
+
+        //听牌状态,摸牌后、过牌后自动出牌
+        cc.log(`过牌执行cc.dd.cardMgr.getIsTing()之前, isTing = `+cc.dd.cardMgr.getIsTing());
         if (cc.dd.cardMgr.getIsTing()) {
+            cc.log(`过牌执行cc.dd.cardMgr.getIsTing():`+cc.dd.cardMgr.getIsTing());
             cc.log(`听牌状态`);
             const moCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("MoCardLayer");
             if (moCard) {
