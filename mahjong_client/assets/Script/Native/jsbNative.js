@@ -117,7 +117,7 @@ cc.dd.invokeWXFriendShareCustumLink = () => {
     if(cc.sys.isMobile) {
         if (cc.sys.os == cc.sys.OS_ANDROID){
             jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity" ,"SendLinkUrl", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
-                "http://dafuvip.com/baaEJ3" ,
+                cc.dd.pubConst.ANDROID_DOWNLOAD_LINK ,
                 "正宗朝阳北票建平凌源手机麻将",
                 "好友随时约局，手机实时对战。搂宝带会儿、点炮赔三家。");
         }else {
@@ -130,7 +130,7 @@ cc.dd.invokeWXMomentShareCustumLink = () => {
     if(cc.sys.isMobile) {
         if (cc.sys.os == cc.sys.OS_ANDROID){
             jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity" ,"ShareLinkTimeline", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
-                "http://dafuvip.com/baaEJ3",
+                cc.dd.pubConst.ANDROID_DOWNLOAD_LINK,
                 "正宗朝阳北票建平凌源手机麻将",
                 "好友随时约局，手机实时对战。搂宝带会儿、点炮赔三家。");
         }else {
@@ -144,7 +144,7 @@ cc.dd.invokeWXFriendShareCustumText = (str, password) => {
         if(cc.sys.os == cc.sys.OS_ANDROID) {
             jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity" ,"SendWXAppContent", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
                 password ,
-                "http://dafuvip.com/baaEJ3",
+                cc.dd.pubConst.ANDROID_DOWNLOAD_LINK,
                 str);
         }else {
             jsb.reflection.callStaticMethod("WXShareTool", "jsInitiateWXFriendsShare:",str);
