@@ -55,6 +55,63 @@ cc.dd.setPlayerHead = (url, head) => {
         });
     }
 };
+/**
+ *  公用的设置图片并保存图片到本地的方法
+ * @param url 图片下载的地址
+ * @param head 需要设置的图片的sprite组件
+ */
+cc.dd.setImageAndWriteToSandbox = (url, head) => {
+        const headUrl = cc.dd.pubConst.IMAGE_PREFIX_HOST + url;  // 此处写你拼接的url
+        cc.log(headUrl);
+        var dirpath =  jsb.fileUtils.getWritablePath() + 'img/';
+        var filepath = dirpath + 'zongzj.png';
+        cc.dd.user.zongzjpath = filepath;
+
+        function loadEnd(){
+            cc.loader.load(filepath, function(err, tex){
+                if( err ){
+                    cc.error(err);
+                }else{
+                    var spriteFrame = new cc.SpriteFrame(tex);
+                    if( spriteFrame ){
+                        spriteFrame.retain();
+                        head.spriteFrame = spriteFrame;
+                    }
+                }
+            });
+        }
+
+        var saveFile = function(data){
+            if( typeof data !== 'undefined' ){
+                if( !jsb.fileUtils.isDirectoryExist(dirpath) ){
+                    jsb.fileUtils.createDirectory(dirpath);
+                }
+                if( jsb.fileUtils.writeDataToFile(  new Uint8Array(data) , filepath) ){
+                    cc.log('Remote write file succeed.');
+                    loadEnd();
+                }else{
+                    cc.log('Remote write file failed.');
+                }
+            }else{
+                cc.log('Remote download file failed.');
+            }
+        };
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            cc.log("xhr.readyState  " +xhr.readyState);
+            cc.log("xhr.status  " +xhr.status);
+            if (xhr.readyState === 4 ) {
+                if(xhr.status === 200){
+                    xhr.responseType = 'arraybuffer';
+                    saveFile(xhr.response);
+                }else{
+                    saveFile(null);
+                }
+            }
+        }.bind(this);
+        xhr.open("GET", headUrl, true);
+        xhr.send();
+};
 // app下载链接分享到朋友对话
 cc.dd.invokeWXFriendShareCustumLink = () => {
     if(cc.sys.isMobile) {
@@ -213,9 +270,14 @@ cc.dd.shareZongZhanJiToWXFriends = () => {
     if (cc.sys.isMobile) {
         cc.log("分享总战绩到微信朋友");
         if (cc.sys.os == cc.sys.OS_ANDROID) {
-
+            if( jsb.fileUtils.isFileExist(cc.dd.user.zongzjpath) ){
+                cc.log('Remote is find' + cc.dd.user.zongzjpath);
+                // 测试下在安卓是否能读取图片
+            }else {
+                cc.log('Remote is not find' + cc.dd.user.zongzjpath);
+            }
         } else {
-            // cc.log("调用原生方法截屏去");
+            jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsSharePicWithImagePath:",cc.dd.user.zongzjpath);
         }
     }
 };
