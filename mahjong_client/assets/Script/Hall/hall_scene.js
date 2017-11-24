@@ -92,8 +92,8 @@ cc.Class({
     },
     setAvatarSpriteFrame(sfurl) {
         var target = this.avatar;
-        // cc.dd.setPlayerHead(sfurl,target);
-        cc.dd.setImageAndWriteToSandbox(sfurl,target); // 测试用 正式版 用上面
+        cc.dd.setPlayerHead(sfurl,target);
+        // cc.dd.setImageAndWriteToSandbox(sfurl,target); // 测试用 正式版 用上面
     },
     // 设置转让房卡按钮是否可见
     setBtnChangeState(state) {

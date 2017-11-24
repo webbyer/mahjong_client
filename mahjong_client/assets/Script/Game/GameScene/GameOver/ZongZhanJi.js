@@ -19,7 +19,10 @@ cc.Class({
 
     },
     initContentPic(imgurl) {
-        cc.dd.setPlayerHead(imgurl,this.contentSpriteFrame);
+        if(imgurl.indexOf("static") == -1){
+            return;
+        }
+        cc.dd.setImageAndWriteToSandbox(imgurl,this.contentSpriteFrame);
     },
     // 返回大厅按钮响应方法
     onClickReturnBtn() {
@@ -30,7 +33,6 @@ cc.Class({
     },
     // 分享按钮的响应方法
     onClickShareBtn() {
-        this.ShareBtn.active = false;
         cc.dd.shareZongZhanJiToWXFriends();
     },
 });

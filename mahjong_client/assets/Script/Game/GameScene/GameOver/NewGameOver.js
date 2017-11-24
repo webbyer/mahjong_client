@@ -141,8 +141,8 @@ cc.Class({
                 this.ReturnBtnTitle.string = "总战绩（" + countdown + "）";
                 countdown--;
                 if (countdown === 0) {
-                    this.unschedule(this.callback);
                     this.returnBtnClick();
+                    this.unschedule(this.callback);
                 }
             };
             this.schedule(this.callback, 5);
