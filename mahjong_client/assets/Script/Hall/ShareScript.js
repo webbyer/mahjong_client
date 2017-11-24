@@ -11,7 +11,8 @@ cc.Class({
     },
     onshareToFriendClick() {
     	cc.log("分享到朋友");
-        cc.dd.invokeWXFriendShareCustumLink();
+        // cc.dd.invokeWXFriendShareCustumLink();
+        cc.dd.shareZongZhanJiToWXFriends(); // 测试用 正式版 用上面
     },
     onshareToQuanClick() {
     	cc.log("分享到票圈");
