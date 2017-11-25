@@ -728,7 +728,7 @@ cc.Class({
         this.cleanDesk();
         cc.dd.Reload.loadPrefab("Game/Prefab/JieSuan", (prefab) => {
             const gameOver = cc.instantiate(prefab);
-            gameOver.getComponent("NewGameOver").initNote(data, this);
+            gameOver.getComponent("NewGameOver").initNote(data);
             this.node.addChild(gameOver);
         });
         // this.scheduleOnce(() => {
@@ -1080,12 +1080,13 @@ cc.Class({
     },
     // 展示总战绩
     showZongZhanJi(data) {
+        cc.log("展示总战绩");
+        this.node.getChildByName("JieSuan").destroy();
         cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
             const zzj = cc.instantiate(prefab);
-            // 还没有真实的数据 防crash
-            // zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
+            // /static/scores/20171124/4700.jpg
+            zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
             this.node.addChild(zzj);
         });
-        this.node.parent.getChildByName("JieSuan").destroy();
     },
 });

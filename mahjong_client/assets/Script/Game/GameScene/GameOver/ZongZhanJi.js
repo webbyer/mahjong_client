@@ -18,11 +18,17 @@ cc.Class({
     onLoad: function () {
 
     },
+    /**
+     *  初始化
+     * @param imgurl 图片相对下载地址
+     */
     initContentPic(imgurl) {
-        if(imgurl.indexOf("static") == -1){
-            return;
+        if(cc.sys.isMobile) {
+            cc.dd.setImageAndWriteToSandbox(imgurl,this.contentSpriteFrame);
+        }else {
+            // 网页版测试用
+            cc.dd.setPlayerHead(imgurl,this.contentSpriteFrame);
         }
-        cc.dd.setImageAndWriteToSandbox(imgurl,this.contentSpriteFrame);
     },
     // 返回大厅按钮响应方法
     onClickReturnBtn() {

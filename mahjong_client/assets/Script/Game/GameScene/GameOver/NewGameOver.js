@@ -77,9 +77,10 @@ cc.Class({
             // this.NextBtn.getCompnent("label").string = `第${data.nowround}/${data.rounds}局`;
             this.NextBtnTitle.string = `开始下一局（${data.nowround+1}）`;
             if (cc.dd.room._subcommand == 4) {
-                this.showBtn(true); // 显示返回按钮
+                this.showBtn(true); // 显示总战绩按钮
             } else {
                 this.showBtn(false);
+                // this.showBtn(true); // 测试用 正式为上面
             }
         }
         // 胡牌类型
@@ -138,14 +139,14 @@ cc.Class({
             this.NextBtn.active = false;
             let countdown = 5;
             this.callback = function () {
-                this.ReturnBtnTitle.string = "总战绩（" + countdown + "）";
                 countdown--;
+                this.ReturnBtnTitle.string = "总战绩（" + countdown + "）";
                 if (countdown === 0) {
                     this.returnBtnClick();
                     this.unschedule(this.callback);
                 }
             };
-            this.schedule(this.callback, 5);
+            this.schedule(this.callback, 1);
         }else {
             this.NextBtn.active = true;
             this.ReturnBtn.active = false;
@@ -162,7 +163,7 @@ cc.Class({
     returnBtnClick() {
         cc.log(`总战绩`);
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP,cc.dd.room.roomserialnumber);
-
+        cc.dd.roomEvent.setIsCache(true);
         // cc.dd.soundMgr.stopAllSound();
         // cc.dd.Reload.loadDir("DirRes", () => {
         //     cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);

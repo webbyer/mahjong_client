@@ -64,7 +64,7 @@ cc.dd.setImageAndWriteToSandbox = (url, head) => {
         const headUrl = cc.dd.pubConst.IMAGE_PREFIX_HOST + url;  // 此处写你拼接的url
         cc.log(headUrl);
         var dirpath =  jsb.fileUtils.getWritablePath() + 'img/';
-        var filepath = dirpath + 'zongzj.png';
+        var filepath = dirpath + 'zongzj.jpg';
         cc.dd.user.zongzjpath = filepath;
 
         function loadEnd(){
