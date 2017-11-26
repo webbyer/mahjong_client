@@ -154,16 +154,17 @@ cc.Class({
     },
     // 下一局监听事件
     nextBtnClick() {
-        this.node.destroy();
         cc.dd.roomEvent.setIsCache(true);
         cc.dd.roomEvent.notifyCacheList();
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_START_NEXTROUND);
+        this.node.destroy();
     },
     // 总战绩点击监听的事件
     returnBtnClick() {
         cc.log(`总战绩`);
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP,cc.dd.room.roomserialnumber);
         cc.dd.roomEvent.setIsCache(true);
+        this.node.destroy();
         // cc.dd.soundMgr.stopAllSound();
         // cc.dd.Reload.loadDir("DirRes", () => {
         //     cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);

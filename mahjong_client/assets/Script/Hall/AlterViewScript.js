@@ -26,10 +26,11 @@ cc.Class({
     onClickComfrimMessage() {
         cc.log(`alterview-确认：关闭`);
         if(this.DismissRoomSuc) {
-            cc.dd.soundMgr.stopAllSound();
-            cc.dd.Reload.loadDir("DirRes", () => {
-                cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);
-            });
+            // cc.dd.soundMgr.stopAllSound();
+            // cc.dd.Reload.loadDir("DirRes", () => {
+            //     cc.dd.sceneMgr.runScene(cc.dd.sceneID.HALL_SCENE);
+            // });
+            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP,cc.dd.room.roomserialnumber);
             this.node.destroy();
         }else if(this.exchangeFKSuc) {
             this.node.parent.parent.destroy();
@@ -38,7 +39,6 @@ cc.Class({
         }else {
             this.node.destroy();
         }
-
     },
 
 });

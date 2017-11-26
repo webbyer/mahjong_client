@@ -166,6 +166,15 @@ cc.Class({
                 });
                 break;
             }
+            case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REQ: { // 4023,查询总战绩的返回
+                cc.log("展示总战绩");
+                cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
+                    const zzj = cc.instantiate(prefab);
+                zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
+                this.node.addChild(zzj);
+            });
+                break;
+            }
             default: {
                 cc.log(`unkown event: ${event}`);
             }

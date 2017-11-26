@@ -1081,10 +1081,9 @@ cc.Class({
     // 展示总战绩
     showZongZhanJi(data) {
         cc.log("展示总战绩");
-        this.node.getChildByName("JieSuan").destroy();
+        // this.node.getChildByName("JieSuan").destroy();
         cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
             const zzj = cc.instantiate(prefab);
-            // /static/scores/20171124/4700.jpg
             zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
             this.node.addChild(zzj);
         });

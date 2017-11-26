@@ -35,8 +35,8 @@ const MJEventManager = cc.Class({
                 body.did = deviceid;
             }
         }else{
-            body.did = "47194279-dfb8-4e35-9ba2-d13dd70028dc";// 网页
-        }//26ee669399b2ee1b //7d5d9880-486b-45cf-9346-795954ba3968
+            body.did = "7d5d9880-486b-45cf-9346-795954ba3968";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
+        }//26ee669399b2ee1b //
 
         switch (event) {
             case cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REP: {   // 检测最新版本，1000
@@ -301,7 +301,11 @@ const MJEventManager = cc.Class({
                 break;
             }
             case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REQ: { // 4023，总战绩查询的返回
-                cc.dd.room.saveMsg(msgId,msgData);
+                if (cc.director.getScene().sceneId !== cc.dd.sceneID.GAME_SCENE) {
+                    this.notifyEvent(msgId, msgData);
+                }else {
+                    cc.dd.room.saveMsg(msgId,msgData);
+                }
                 break;
             }
             default: {

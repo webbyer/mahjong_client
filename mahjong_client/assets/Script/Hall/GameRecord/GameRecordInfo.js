@@ -84,6 +84,7 @@ cc.Class({
      */
     initInfo(data) {
         // cc.log(`初始化单个信息`);
+        this.absuluteRoomID = data.roomserialnumber;
         this.RoomID.string = "房间号: " + data.roomid;
         this.GameDate.string = "对战时间: " + data.time;
         this.NicknameOne.string =data.nickname1;
@@ -102,5 +103,9 @@ cc.Class({
         cc.dd.setPlayerHead(data.wx_portrait3,target03);
         var target04 = this.AvatarFour;
         cc.dd.setPlayerHead(data.wx_portrait4,target04);
+    },
+    onClickItem() {
+        cc.log("显示总战绩");
+        cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP,this.absuluteRoomID);
     },
 });
