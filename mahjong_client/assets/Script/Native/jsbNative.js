@@ -202,7 +202,8 @@ cc.dd.getCurrentBatteryChargingStatus = () => {
 cc.dd.accessPatseBoard = (str) => {
     if(cc.sys.isMobile) {
         if(cc.sys.os == cc.sys.OS_ANDROID) {
-
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity","copyRoomIDToPatseBoard",
+                "(Ljava/lang/String;)V",str);
         }else {
             jsb.reflection.callStaticMethod("RootViewController","copyRoomIDToPatseBoard:",str);
         }
@@ -274,6 +275,8 @@ cc.dd.shareZongZhanJiToWXFriends = () => {
             if( jsb.fileUtils.isFileExist(cc.dd.user.zongzjpath) ){
                 cc.log('Remote is find' + cc.dd.user.zongzjpath);
                 // 测试下在安卓是否能读取图片
+                jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity","jsInitiateWXFriendsSharePicWithImagePath",
+                    "(Ljava/lang/String;)V",cc.dd.user.zongzjpath);
             }else {
                 cc.log('Remote is not find' + cc.dd.user.zongzjpath);
             }
