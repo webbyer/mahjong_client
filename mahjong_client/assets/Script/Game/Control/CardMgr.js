@@ -12,14 +12,14 @@ const CONFIG = {
         PENG_GANG_X: 0,
     },
     RIGHT: {
-        HAND_CARD_X: -11,
-        HAND_CARD_Y: -32,
+        HAND_CARD_X: -7, // -11
+        HAND_CARD_Y: -28, // -32
         HAND_CARD_INIT_Y: -50,
         PENG_GANG_X: 30,
-        PENG_GANG_Y: 85,
+        PENG_GANG_Y: 110, // 85
         PENG_GANE_INIT_Y: 40,
         OUT_CARD_X: 5.5,
-        OUT_CARD_Y: 27,
+        OUT_CARD_Y: 30,
         OUT_CARD_INIT_Y: 33.5,  // 出牌的第一张位置x为：-(length - 1) * 5.5
     },
     TOP: {
@@ -29,22 +29,22 @@ const CONFIG = {
         PENG_GANG_X: 0,
     },
     LEFT: {
-        HAND_CARD_X: 11,
-        HAND_CARD_Y: 32,
+        HAND_CARD_X: 7, // 11
+        HAND_CARD_Y: 28, // 32
         HAND_CARD_INIT_Y: 50,  // 手牌第一场的初始位置x为: -(length - 1) * -11
         HAND_CARD_INIT_X: -133,
         PENG_GANG_X: -30,
-        PENG_GANG_Y: -80,
+        PENG_GANG_Y: -95, // -80
         PENG_GANE_INIT_Y: -40,
         OUT_CARD_X: -5.5,
-        OUT_CARD_Y: -27,
+        OUT_CARD_Y: -30, // -27
         OUT_CARD_INIT_Y: -33.5,
     },
     // 出牌的每层里牌的张数
     OUT_CARD_NUM: {
-        LAYER_ONE: 7,
-        LAYER_TWO: 7,
-        LAYER_THREE: 4,
+        LAYER_ONE: 6,
+        LAYER_TWO: 6,
+        LAYER_THREE: 6,
     },
     LIGHTUP_AREA: {
         OUTCARDLAYER: "out_card",

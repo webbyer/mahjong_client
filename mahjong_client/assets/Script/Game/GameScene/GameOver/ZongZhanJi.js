@@ -22,12 +22,9 @@ cc.Class({
      *  初始化
      * @param imgurl 图片相对下载地址
      */
-    initContentPic(imgurl) {
+    initContentPic(imgurl,uniqueRoomId) {
         if(cc.sys.isMobile) {
-            cc.dd.setImageAndWriteToSandbox(imgurl,this.contentSpriteFrame);
-        }else {
-            // 网页版测试用
-            cc.dd.setPlayerHead(imgurl,this.contentSpriteFrame);
+            cc.dd.setImageAndWriteToSandbox(imgurl,this.contentSpriteFrame,uniqueRoomId);
         }
     },
     // 返回大厅按钮响应方法
@@ -45,5 +42,9 @@ cc.Class({
     // 分享按钮的响应方法
     onClickShareBtn() {
         cc.dd.shareZongZhanJiToWXFriends();
+    },
+    // 分享到微信朋友圈按钮的响应方法
+    onClickShareToMomentsBtn() {
+        cc.dd.shareZongZhanJiToWXMoment();
     },
 });

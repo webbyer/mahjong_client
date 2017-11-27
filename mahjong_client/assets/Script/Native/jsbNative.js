@@ -60,11 +60,11 @@ cc.dd.setPlayerHead = (url, head) => {
  * @param url 图片下载的地址
  * @param head 需要设置的图片的sprite组件
  */
-cc.dd.setImageAndWriteToSandbox = (url, head) => {
+cc.dd.setImageAndWriteToSandbox = (url, head, uniqueRoomId) => {
         const headUrl = cc.dd.pubConst.IMAGE_PREFIX_HOST + url;  // 此处写你拼接的url
         cc.log(headUrl);
         var dirpath =  jsb.fileUtils.getWritablePath() + 'img/';
-        var filepath = dirpath + 'zongzj.jpg';
+        var filepath = dirpath + uniqueRoomId + '.jpg';
         cc.dd.user.zongzjpath = filepath;
 
         function loadEnd(){
@@ -278,7 +278,19 @@ cc.dd.shareZongZhanJiToWXFriends = () => {
                 cc.log('Remote is not find' + cc.dd.user.zongzjpath);
             }
         } else {
-            jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsSharePicWithImagePath:",cc.dd.user.zongzjpath);
+            jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsSharePicWithImagePath:whitsence:",cc.dd.user.zongzjpath,"0");
+        }
+    }
+};
+
+// 分享总战绩到微信朋友圈
+cc.dd.shareZongZhanJiToWXMoment = () => {
+    if (cc.sys.isMobile) {
+        cc.log("分享总战绩到微信朋友圈");
+        if (cc.sys.os == cc.sys.OS_ANDROID) {
+
+        }else {
+            jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsSharePicWithImagePath:whitsence:",cc.dd.user.zongzjpath,"1");
         }
     }
 };

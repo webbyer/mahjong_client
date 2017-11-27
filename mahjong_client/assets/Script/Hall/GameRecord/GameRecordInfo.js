@@ -106,6 +106,7 @@ cc.Class({
     },
     onClickItem() {
         cc.log("显示总战绩");
+        cc.dd.user.roomserialnumber = this.absuluteRoomID;
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP,this.absuluteRoomID);
     },
 });

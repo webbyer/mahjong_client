@@ -60,7 +60,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 296,
+      "width": 196,
       "height": 148
     },
     "_rotationX": 0,
@@ -121,8 +121,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 132,
-      "height": 195
+      "width": 90,
+      "height": 130
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -130,7 +130,7 @@
     "_scaleY": 0.6,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -82,
+      "x": -53,
       "y": 0
     },
     "_skewX": 0,
@@ -175,8 +175,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 82,
-      "height": 114
+      "width": 86,
+      "height": 100
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -271,7 +271,8 @@
     "_enabled": true,
     "Spr": {
       "__id__": 4
-    }
+    },
+    "id": -1
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -326,8 +327,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 132,
-      "height": 195
+      "width": 90,
+      "height": 130
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -380,8 +381,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 82,
-      "height": 114
+      "width": 86,
+      "height": 100
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -476,7 +477,8 @@
     "_enabled": true,
     "Spr": {
       "__id__": 11
-    }
+    },
+    "id": -1
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -531,8 +533,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 132,
-      "height": 195
+      "width": 90,
+      "height": 130
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -540,7 +542,7 @@
     "_scaleY": 0.6,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 82,
+      "x": 53,
       "y": 0
     },
     "_skewX": 0,
@@ -585,8 +587,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 82,
-      "height": 114
+      "width": 86,
+      "height": 100
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -681,7 +683,8 @@
     "_enabled": true,
     "Spr": {
       "__id__": 18
-    }
+    },
+    "id": -1
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -730,7 +733,7 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
-      "width": 296,
+      "width": 196,
       "height": 148
     },
     "_resize": 1,
@@ -746,7 +749,7 @@
     "_N$paddingRight": 0,
     "_N$paddingTop": 0,
     "_N$paddingBottom": 0,
-    "_N$spacingX": -50,
+    "_N$spacingX": -37,
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0

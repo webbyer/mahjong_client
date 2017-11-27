@@ -1084,7 +1084,7 @@ cc.Class({
         // this.node.getChildByName("JieSuan").destroy();
         cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
             const zzj = cc.instantiate(prefab);
-            zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
+            zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl,cc.dd.room.roomserialnumber);
             this.node.addChild(zzj);
         });
     },

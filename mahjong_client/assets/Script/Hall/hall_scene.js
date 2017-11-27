@@ -170,9 +170,9 @@ cc.Class({
                 cc.log("展示总战绩");
                 cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
                     const zzj = cc.instantiate(prefab);
-                zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl);
-                this.node.addChild(zzj);
-            });
+                    zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl,cc.dd.user.roomserialnumber);
+                    this.node.addChild(zzj);
+                });
                 break;
             }
             default: {

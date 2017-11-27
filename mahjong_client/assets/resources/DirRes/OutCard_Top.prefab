@@ -108,17 +108,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 82,
-      "height": 116
+      "width": 86,
+      "height": 100
     },
     "_rotationX": 0,
     "_rotationY": 0,
-    "_scaleX": 0.6,
-    "_scaleY": 0.4,
+    "_scaleX": 0.8,
+    "_scaleY": 0.7,
     "_position": {
       "__type__": "cc.Vec2",
       "x": -0.5,
-      "y": 12.7
+      "y": 14
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -390,7 +390,8 @@
     "_enabled": true,
     "Spr": {
       "__id__": 3
-    }
+    },
+    "id": -1
   },
   {
     "__type__": "cc.PrefabInfo",
