@@ -12,7 +12,7 @@ cc.Class({
     onBuTingClick() {
         // cc.dd.cardMgr.setIsCanOutCard(true);
         cc.dd.cardMgr.setTingList(null);
-        const cardNode = this.node.parent.getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("HandCardLay");
+        const cardNode = this.node.parent.getComponent("mj_gameScene").playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
         cardNode.children.forEach((item) => {
             item.getChildByName("TingSign").active = false;
         });

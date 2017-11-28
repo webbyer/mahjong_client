@@ -93,7 +93,7 @@ const CardMgr = cc.Class({
         switch (localSeat) {
             case cc.dd.gameCfg.PLAYER_SEAT_LOCAL.BOTTOM: {
                 this.initSelfHandCard(h_node, data);
-                this._SelfPlayerNode = h_node.parent.parent;
+                this._SelfPlayerNode = h_node.parent.parent.parent;
                 break;
             }
             case cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT: {
@@ -445,8 +445,8 @@ const CardMgr = cc.Class({
         const node1 = o_node.getChildByName("OutCardLayer1");
         const node2 = o_node.getChildByName("OutCardLayer2");
         const node3 = o_node.getChildByName("OutCardLayer3");
-        const moNode = o_node.parent.getChildByName("HandCardLayer").getChildByName("MoCardLayer");
-        const handNode = o_node.parent.getChildByName("HandCardLayer").getChildByName("HandCardLay");
+        const moNode = o_node.parent.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+        const handNode = o_node.parent.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
         let hasMo = false;  // 标记是否是摸牌后出牌的
         if (moNode) { // 将摸牌的节点里的牌清掉
             moNode.children.forEach((item) => {
@@ -804,7 +804,7 @@ const CardMgr = cc.Class({
         let haspeng = false;
         // 遍历碰杠
         cc.dd.room._playerNodeArr.forEach((pitem,pindex,parr) => {
-            const pengchinode = pitem.getChildByName("PengGangLayer");
+            const pengchinode = pitem.getChildByName("ParentContainer").getChildByName("PengGangLayer");
             if(pengchinode.children.length > 0) {
                 pitem.outPengArr.forEach((mitem,mindex) => {
                     if(Array.isArray(mitem)){

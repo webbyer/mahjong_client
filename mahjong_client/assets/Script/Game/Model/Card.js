@@ -131,8 +131,8 @@ cc.Class({
                     //         break;
                     //     }
                     // }
-                    const handNode = cc.find("UI_ROOT").getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("HandCardLay");
-                    const moCard = cc.find("UI_ROOT").getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+                    const handNode = cc.find("UI_ROOT").getComponent("mj_gameScene").playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
+                    const moCard = cc.find("UI_ROOT").getComponent("mj_gameScene").playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
                     moCard.children.forEach((item) => {
                         item.destroy();
                     });

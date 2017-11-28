@@ -215,7 +215,7 @@ cc.Class({
             let player_class = null;
 
             // 手牌节点
-            const handNode = this.playerArr[index].getChildByName("HandCardLayer").getChildByName("HandCardLay");
+            const handNode = this.playerArr[index].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
 
             if (index === 0) {
                 cc.log(`初始化自己的信息`);
@@ -471,6 +471,9 @@ cc.Class({
     // 玩家吃牌
     playerChiCard(data) {
         const localSeat = this.getLocalSeatByUserId(data.chipaiuid);
+        if(localSeat === 1) {
+            this.playerArr[localSeat - 1].getChildByName("ParentContainer").getComponent(cc.Layout).spacingX = 50; // 设置顶格
+        }
         if (!data.notDes) {
             cc.dd.roomEvent.setIsCache(false);
             cc.dd.playEffect(1, cc.dd.soundName.V_CHI);
@@ -484,7 +487,7 @@ cc.Class({
         }
 
         if (localSeat) {
-            const pengNode = this.playerArr[localSeat - 1].getChildByName("PengGangLayer");
+            const pengNode = this.playerArr[localSeat - 1].getChildByName("ParentContainer").getChildByName("PengGangLayer");
             cc.dd.cardMgr.pengGangCard(pengNode, localSeat, data, cc.dd.gameCfg.OPERATE_TYPE.CHI);
             if (localSeat == 1) {
                 /* ---------------------------  */
@@ -511,6 +514,9 @@ cc.Class({
     // 玩家碰牌
     playerPengCard(data) {
         const localSeat = this.getLocalSeatByUserId(data.penguid);
+        if(localSeat === 1) {
+            this.playerArr[localSeat - 1].getChildByName("ParentContainer").getComponent(cc.Layout).spacingX = 50; // 设置顶格
+        }
         if (!data.notDes) {
             cc.dd.roomEvent.setIsCache(false);
             cc.dd.playEffect(1, cc.dd.soundName.V_PENG);
@@ -524,7 +530,7 @@ cc.Class({
         }
 
         if (localSeat) {
-            const pengNode = this.playerArr[localSeat - 1].getChildByName("PengGangLayer");
+            const pengNode = this.playerArr[localSeat - 1].getChildByName("ParentContainer").getChildByName("PengGangLayer");
             cc.dd.cardMgr.pengGangCard(pengNode, localSeat, data, cc.dd.gameCfg.OPERATE_TYPE.PENG);
             if (localSeat == 1) {
                 /* ---------------------------  */
@@ -553,6 +559,9 @@ cc.Class({
     // 玩家杠牌
     playerGangCard(data) {
         const localSeat = this.getLocalSeatByUserId(data.ganguid);
+        if(localSeat === 1) {
+            this.playerArr[localSeat - 1].getChildByName("ParentContainer").getComponent(cc.Layout).spacingX = 50; // 设置顶格
+        }
         if (!data.notDes) {
             cc.dd.roomEvent.setIsCache(false);
             cc.dd.playEffect(1, cc.dd.soundName.V_GANG);
@@ -568,7 +577,7 @@ cc.Class({
         }
 
         if (localSeat) {
-            const pengNode = this.playerArr[localSeat - 1].getChildByName("PengGangLayer");
+            const pengNode = this.playerArr[localSeat - 1].getChildByName("ParentContainer").getChildByName("PengGangLayer");
             cc.log(`进行杠牌的操作`);
             cc.dd.cardMgr.pengGangCard(pengNode, localSeat, data, cc.dd.gameCfg.OPERATE_TYPE.GANG);
         } else {
@@ -642,7 +651,7 @@ cc.Class({
         cc.dd.roomEvent.setIsCache(false);
         const localSeat = this.getLocalSeatByUserId(userid);
         if (localSeat) {
-            const moNode = this.playerArr[localSeat - 1].getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            const moNode = this.playerArr[localSeat - 1].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
             cc.dd.cardMgr.MoCard(moNode, localSeat, data);
             if (localSeat == 1) {
                 cc.dd.cardMgr.setIsCanOutCard(true);
@@ -752,7 +761,7 @@ cc.Class({
         if (localSeat == 1) {
             cc.dd.cardMgr.setIsTing(true);
         }
-        const cardNode = this.playerArr[0].getChildByName("HandCardLayer").getChildByName("HandCardLay");
+        const cardNode = this.playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
         cardNode.children.forEach((card) => {
             card.getChildByName("TingSign").active = false;
         });
@@ -846,7 +855,7 @@ cc.Class({
     showTingSign() {
         const tingList = cc.dd.cardMgr.getTingList();
         if (tingList) {
-            const cardNode = this.playerArr[0].getChildByName("HandCardLayer").getChildByName("HandCardLay");
+            const cardNode = this.playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
             let hasTing = false;
             tingList.forEach((item) => {
                 cardNode.children.forEach((card) => {
@@ -856,7 +865,7 @@ cc.Class({
                     }
                 });
             });
-            const moCard = this.playerArr[0].getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            const moCard = this.playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
             tingList.forEach((item) => {
                 moCard.children.forEach((card) => {
                     if (item == card.cardId) {
@@ -877,14 +886,21 @@ cc.Class({
      *  清理桌面
      */
     cleanDesk() {
-        this.playerArr.forEach((item) => {
-            const handNode = item.getChildByName("HandCardLayer").getChildByName("HandCardLay");
+        this.playerArr.forEach((item,index) => {//ParentContainer
+            const handNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
             const outNode = item.getChildByName("OutCardLayer");
-            const moNode = item.getChildByName("HandCardLayer").getChildByName("MoCardLayer");
-            const pengGangNode = item.getChildByName("PengGangLayer");
+            const moNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            const pengGangNode = item.getChildByName("ParentContainer").getChildByName("PengGangLayer");
             handNode.removeAllChildren(true);
             moNode.removeAllChildren(true);
             pengGangNode.removeAllChildren(true);
+            pengGangNode.width = 0;
+            if(index === 0) {
+                item.getChildByName("ParentContainer").getComponent(cc.Layout).spacingX = 0; // 设置顶格
+            }
+            if(index === 2) {
+                handNode.parent.x = 0;
+            }
             // // 清空手牌
             // handNode.children.forEach((item) => {
             //     item.destroy();

@@ -185,7 +185,7 @@ cc.Class({
                 const moCard = cc.dd.cardMgr.getMoCard();
                 if (moCard) {
                     const moNode = this.node.getComponent("mj_gameScene").playerArr[0].
-                    getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+                    getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
                     this.scheduleOnce(() => {
                         moNode.children.forEach((item) => {
                             item.destroy();
@@ -214,7 +214,7 @@ cc.Class({
         if (cc.dd.cardMgr.getIsTing()) {
             cc.log(`过牌执行cc.dd.cardMgr.getIsTing():`+cc.dd.cardMgr.getIsTing());
             cc.log(`听牌状态`);
-            const moCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            const moCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
             if (moCard) {
                 moCard.children.forEach((item) => {
                     const suit = parseInt(item.cardId / 9) + 1;
@@ -255,8 +255,8 @@ cc.Class({
         this.node.getComponent("mj_gameScene").showTingSign();
         this.node.getComponent("mj_gameScene").playerArr[0].getComponent("PlayerSelf").hideOperateBtn();
         if (cc.dd.cardMgr.getTingList().length == 1) {
-            const moCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("MoCardLayer");
-            const handCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("HandCardLayer").getChildByName("HandCardLay");
+            const moCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            const handCard = this.node.getComponent("mj_gameScene").playerArr[0].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
             let hasRemove = false;
             moCard.children.forEach((card) => {
                 if (cc.dd.cardMgr.getTingList()[0] == card.cardId) {

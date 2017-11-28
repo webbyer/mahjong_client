@@ -22,7 +22,7 @@ cc.Class({
         this.id = data;
         let str = "";
         if (data == -2) {
-            str = ""; // ab
+            str = "ab";
         }else {
             this.suit = parseInt(data / 9) + 1;
             this.num = data % 9 + 1;

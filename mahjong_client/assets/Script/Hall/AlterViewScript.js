@@ -24,7 +24,7 @@ cc.Class({
     },
     // 确认按钮
     onClickComfrimMessage() {
-        cc.log(`alterview-确认：关闭`);
+        // cc.log(`alterview-确认：关闭`);
         if(this.DismissRoomSuc) {
             // cc.dd.soundMgr.stopAllSound();
             // cc.dd.Reload.loadDir("DirRes", () => {
