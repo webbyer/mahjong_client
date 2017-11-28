@@ -64,7 +64,7 @@ cc.dd.setImageAndWriteToSandbox = (url, head, uniqueRoomId) => {
         const headUrl = cc.dd.pubConst.IMAGE_PREFIX_HOST + url;  // 此处写你拼接的url
         cc.log(headUrl);
         var dirpath =  jsb.fileUtils.getWritablePath() + 'img/';
-        var filepath = dirpath + uniqueRoomId + '.jpg';
+        var filepath = dirpath + uniqueRoomId + '.png';
         cc.dd.user.zongzjpath = filepath;
 
         function loadEnd(){
@@ -81,6 +81,11 @@ cc.dd.setImageAndWriteToSandbox = (url, head, uniqueRoomId) => {
             });
         }
 
+        if( jsb.fileUtils.isFileExist(filepath) ){
+            cc.log('Remote is find' + filepath);
+            loadEnd();
+            return;
+        }
         var saveFile = function(data){
             if( typeof data !== 'undefined' ){
                 if( !jsb.fileUtils.isDirectoryExist(dirpath) ){
