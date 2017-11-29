@@ -24,5 +24,6 @@
   "renderMode": "0",
   "startScene": "ffe25c5e-fc0d-41f0-91b0-8a50083592ab",
   "title": "chaoyangmahjiong",
-  "webOrientation": "auto"
+  "webOrientation": "auto",
+  "jailbreakPlatform": false
 }
