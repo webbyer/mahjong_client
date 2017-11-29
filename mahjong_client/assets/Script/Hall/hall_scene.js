@@ -14,6 +14,14 @@ cc.Class({
             default:null,
             type: cc.Label,
         },
+        CardTitle:{
+            default:null,
+            type: cc.Label,
+        },
+        CardContent:{
+            default:null,
+            type: cc.Label,
+        },
         avatar: {
             default:null,
             type: cc.Sprite,
@@ -74,20 +82,13 @@ cc.Class({
             return;
         }
         if(cc.dd.user.getCardState().unlimited === true) {
-            this.RoomCard.string = "房卡：无限畅打";
-            let deadline = new cc.Node('deadline');
-            let deadlineLabel = deadline.addComponent(cc.Label);
-            deadlineLabel.fontSize = 19;
-            deadlineLabel.lineHeight = 30;
-            deadline.anchorX = 0;
-            this.infoNode.addChild(deadline);
-            let tempstr = "";
-            cc.dd.user.getCardState().unlimitedshowdetail.forEach((item) => {
-               tempstr = tempstr + item;
-            });
-            deadlineLabel.string = tempstr;
+            this.RoomCard.string = "无限畅打";
+            this.CardTitle.string = cc.dd.user.getCardState().unlimitedshowdetail[0];
+            this.CardContent.string = cc.dd.user.getCardState().unlimitedshowdetail[1]
         }else {
-            this.RoomCard.string = "房卡：" + num;
+            this.RoomCard.string = '次卡';
+            this.CardTitle.string = '数量 :';
+            this.CardContent.string = num + '';
         }
     },
     setAvatarSpriteFrame(sfurl) {
