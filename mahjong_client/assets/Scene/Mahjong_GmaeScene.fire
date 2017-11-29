@@ -4707,7 +4707,11 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 195,
+=======
+      "width": 220,
+>>>>>>> fenzhi
       "height": 90
     },
     "_rotationX": 0,
@@ -4716,7 +4720,11 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": 185,
+=======
+      "x": 200,
+>>>>>>> fenzhi
       "y": 335
     },
     "_skewX": 0,
@@ -4766,7 +4774,11 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 215,
+=======
+      "width": 200,
+>>>>>>> fenzhi
       "height": 50
     },
     "_rotationX": 0,
@@ -4875,7 +4887,11 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": -215,
+=======
+      "x": -200,
+>>>>>>> fenzhi
       "y": 0
     },
     "_skewX": 0,
@@ -4926,7 +4942,11 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 215,
+=======
+      "width": 200,
+>>>>>>> fenzhi
       "height": 50
     },
     "_resize": 1,
@@ -5040,7 +5060,11 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 195,
+=======
+      "width": 220,
+>>>>>>> fenzhi
       "height": 90
     },
     "_resize": 1,
@@ -7362,8 +7386,13 @@
       "width": 300,
       "height": 320
     },
+<<<<<<< HEAD
     "_rotationX": -2,
     "_rotationY": -2,
+=======
+    "_rotationX": -4,
+    "_rotationY": -4,
+>>>>>>> fenzhi
     "_scaleX": 1,
     "_scaleY": 1,
     "_position": {
@@ -9781,7 +9810,11 @@
         "__id__": 246
       },
       {
+<<<<<<< HEAD
         "__id__": 253
+=======
+        "__id__": 255
+>>>>>>> fenzhi
       },
       {
         "__id__": 262
@@ -9842,7 +9875,11 @@
   },
   {
     "__type__": "cc.Node",
+<<<<<<< HEAD
     "_name": "OutCardLayer",
+=======
+    "_name": "ParentContainer",
+>>>>>>> fenzhi
     "_objFlags": 0,
     "_parent": {
       "__id__": 245
@@ -9853,16 +9890,29 @@
       },
       {
         "__id__": 249
+<<<<<<< HEAD
       },
       {
         "__id__": 251
+=======
+>>>>>>> fenzhi
       }
     ],
     "_tag": -1,
     "_active": true,
+<<<<<<< HEAD
     "_components": [],
     "_prefab": null,
     "_id": "fcfdfBVIJBPaPHn6ouSByY",
+=======
+    "_components": [
+      {
+        "__id__": 254
+      }
+    ],
+    "_prefab": null,
+    "_id": "bdWGVS9fZGN5gaM4Q2Py0C",
+>>>>>>> fenzhi
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -9874,13 +9924,22 @@
     "_cascadeOpacityEnabled": true,
     "_anchorPoint": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": 0.5,
+=======
+      "x": 0,
+>>>>>>> fenzhi
       "y": 0.5
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 0,
       "height": 0
+=======
+      "width": 1000,
+      "height": 120
+>>>>>>> fenzhi
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -9888,8 +9947,13 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": 0,
       "y": 0
+=======
+      "x": -635,
+      "y": -270
+>>>>>>> fenzhi
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -9900,7 +9964,11 @@
   },
   {
     "__type__": "cc.Node",
+<<<<<<< HEAD
     "_name": "OutCardLayer3",
+=======
+    "_name": "PengGangLayer",
+>>>>>>> fenzhi
     "_objFlags": 0,
     "_parent": {
       "__id__": 246
@@ -9914,7 +9982,11 @@
       }
     ],
     "_prefab": null,
+<<<<<<< HEAD
     "_id": "bcNrhYQbpE17nyWltuSxIn",
+=======
+    "_id": "8d4Yd1yzVF6Jbn/2E2kEK5",
+>>>>>>> fenzhi
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -9931,8 +10003,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 380,
       "height": 80
+=======
+      "width": 0,
+      "height": 120
+>>>>>>> fenzhi
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -9940,8 +10017,13 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": -120,
       "y": -45
+=======
+      "x": 0,
+      "y": 0
+>>>>>>> fenzhi
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -9960,8 +10042,13 @@
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 383,
       "height": 80
+=======
+      "width": 530,
+      "height": 120
+>>>>>>> fenzhi
     },
     "_resize": 1,
     "_N$layoutType": 1,
@@ -9976,28 +10063,55 @@
     "_N$paddingRight": 0,
     "_N$paddingTop": 0,
     "_N$paddingBottom": 0,
+<<<<<<< HEAD
     "_N$spacingX": -18,
+=======
+    "_N$spacingX": 40,
+>>>>>>> fenzhi
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0
   },
   {
     "__type__": "cc.Node",
+<<<<<<< HEAD
     "_name": "OutCardLayer2",
+=======
+    "_name": "HandCardLayer",
+>>>>>>> fenzhi
     "_objFlags": 0,
     "_parent": {
       "__id__": 246
     },
+<<<<<<< HEAD
     "_children": [],
+=======
+    "_children": [
+      {
+        "__id__": 250
+      },
+      {
+        "__id__": 252
+      }
+    ],
+>>>>>>> fenzhi
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 250
       }
     ],
     "_prefab": null,
     "_id": "8epTL/5IVJtbYmHSivgEVA",
+=======
+        "__id__": 253
+      }
+    ],
+    "_prefab": null,
+    "_id": "ca5vAffLBKIY7bGfMuht/9",
+>>>>>>> fenzhi
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -10014,8 +10128,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 380,
       "height": 80
+=======
+      "width": 882,
+      "height": 120
+>>>>>>> fenzhi
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -10023,8 +10142,13 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": -120,
       "y": -90
+=======
+      "x": 0,
+      "y": 10
+>>>>>>> fenzhi
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -10034,6 +10158,7 @@
     "groupIndex": 0
   },
   {
+<<<<<<< HEAD
     "__type__": "cc.Layout",
     "_name": "",
     "_objFlags": 0,
@@ -10070,17 +10195,32 @@
     "_objFlags": 0,
     "_parent": {
       "__id__": 246
+=======
+    "__type__": "cc.Node",
+    "_name": "HandCardLay",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 249
+>>>>>>> fenzhi
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 252
       }
     ],
     "_prefab": null,
     "_id": "caJ9Gq+IxGxodC0o2NbwRj",
+=======
+        "__id__": 251
+      }
+    ],
+    "_prefab": null,
+    "_id": "c3qO1vG/dLTIckjhRLLLiD",
+>>>>>>> fenzhi
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -10097,8 +10237,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 380,
       "height": 80
+=======
+      "width": 842,
+      "height": 120
+>>>>>>> fenzhi
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -10106,8 +10251,13 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": -120,
       "y": -137
+=======
+      "x": 0,
+      "y": 0
+>>>>>>> fenzhi
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -10121,13 +10271,22 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 251
+=======
+      "__id__": 250
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 500,
       "height": 80
+=======
+      "width": 842,
+      "height": 120
+>>>>>>> fenzhi
     },
     "_resize": 1,
     "_N$layoutType": 1,
@@ -10142,13 +10301,18 @@
     "_N$paddingRight": 0,
     "_N$paddingTop": 0,
     "_N$paddingBottom": 0,
+<<<<<<< HEAD
     "_N$spacingX": -18,
+=======
+    "_N$spacingX": -10,
+>>>>>>> fenzhi
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0
   },
   {
     "__type__": "cc.Node",
+<<<<<<< HEAD
     "_name": "ParentContainer",
     "_objFlags": 0,
     "_parent": {
@@ -10171,6 +10335,19 @@
     ],
     "_prefab": null,
     "_id": "bdWGVS9fZGN5gaM4Q2Py0C",
+=======
+    "_name": "MoCardLayer",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 249
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "_id": "173HGzEwRGTZPRTpNxUk3G",
+>>>>>>> fenzhi
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
@@ -10187,8 +10364,13 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
       "width": 1000,
       "height": 120
+=======
+      "width": 0,
+      "height": 0
+>>>>>>> fenzhi
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -10196,8 +10378,13 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": -635,
       "y": -270
+=======
+      "x": 0,
+      "y": 0
+>>>>>>> fenzhi
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -10207,6 +10394,7 @@
     "groupIndex": 0
   },
   {
+<<<<<<< HEAD
     "__type__": "cc.Node",
     "_name": "PengGangLayer",
     "_objFlags": 0,
@@ -10257,234 +10445,12 @@
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
     "groupIndex": 0
-  },
-  {
+=======
     "__type__": "cc.Layout",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 254
-    },
-    "_enabled": true,
-    "_layoutSize": {
-      "__type__": "cc.Size",
-      "width": 530,
-      "height": 120
-    },
-    "_resize": 1,
-    "_N$layoutType": 1,
-    "_N$padding": 0,
-    "_N$cellSize": {
-      "__type__": "cc.Size",
-      "width": 40,
-      "height": 40
-    },
-    "_N$startAxis": 0,
-    "_N$paddingLeft": 0,
-    "_N$paddingRight": 0,
-    "_N$paddingTop": 0,
-    "_N$paddingBottom": 0,
-    "_N$spacingX": 40,
-    "_N$spacingY": 0,
-    "_N$verticalDirection": 1,
-    "_N$horizontalDirection": 0
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "HandCardLayer",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 253
-    },
-    "_children": [
-      {
-        "__id__": 257
-      },
-      {
-        "__id__": 259
-      }
-    ],
-    "_tag": -1,
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 260
-      }
-    ],
-    "_prefab": null,
-    "_id": "ca5vAffLBKIY7bGfMuht/9",
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_cascadeOpacityEnabled": true,
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0.5
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 882,
-      "height": 120
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 10
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0,
-    "_opacityModifyRGB": false,
-    "groupIndex": 0
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "HandCardLay",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 256
-    },
-    "_children": [],
-    "_tag": -1,
-    "_active": true,
-    "_components": [
-      {
-        "__id__": 258
-      }
-    ],
-    "_prefab": null,
-    "_id": "c3qO1vG/dLTIckjhRLLLiD",
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_cascadeOpacityEnabled": true,
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0.5
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 842,
-      "height": 120
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0,
-    "_opacityModifyRGB": false,
-    "groupIndex": 0
-  },
-  {
-    "__type__": "cc.Layout",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 257
-    },
-    "_enabled": true,
-    "_layoutSize": {
-      "__type__": "cc.Size",
-      "width": 842,
-      "height": 120
-    },
-    "_resize": 1,
-    "_N$layoutType": 1,
-    "_N$padding": 0,
-    "_N$cellSize": {
-      "__type__": "cc.Size",
-      "width": 40,
-      "height": 40
-    },
-    "_N$startAxis": 0,
-    "_N$paddingLeft": 0,
-    "_N$paddingRight": 0,
-    "_N$paddingTop": 0,
-    "_N$paddingBottom": 0,
-    "_N$spacingX": -10,
-    "_N$spacingY": 0,
-    "_N$verticalDirection": 1,
-    "_N$horizontalDirection": 0
-  },
-  {
-    "__type__": "cc.Node",
-    "_name": "MoCardLayer",
-    "_objFlags": 0,
-    "_parent": {
-      "__id__": 256
-    },
-    "_children": [],
-    "_tag": -1,
-    "_active": true,
-    "_components": [],
-    "_prefab": null,
-    "_id": "173HGzEwRGTZPRTpNxUk3G",
-    "_opacity": 255,
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
-    "_cascadeOpacityEnabled": true,
-    "_anchorPoint": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0.5
-    },
-    "_contentSize": {
-      "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
-    },
-    "_rotationX": 0,
-    "_rotationY": 0,
-    "_scaleX": 1,
-    "_scaleY": 1,
-    "_position": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_skewX": 0,
-    "_skewY": 0,
-    "_localZOrder": 0,
-    "_globalZOrder": 0,
-    "_opacityModifyRGB": false,
-    "groupIndex": 0
-  },
-  {
-    "__type__": "cc.Layout",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 256
+      "__id__": 249
     },
     "_enabled": true,
     "_layoutSize": {
@@ -10509,19 +10475,29 @@
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0
+>>>>>>> fenzhi
   },
   {
     "__type__": "cc.Layout",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 253
+<<<<<<< HEAD
+      "__id__": 254
+=======
+      "__id__": 246
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_layoutSize": {
       "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 530,
+      "height": 120
+=======
       "width": 300,
       "height": 200
+>>>>>>> fenzhi
     },
     "_resize": 1,
     "_N$layoutType": 1,
@@ -10536,7 +10512,445 @@
     "_N$paddingRight": 0,
     "_N$paddingTop": 0,
     "_N$paddingBottom": 0,
+<<<<<<< HEAD
+    "_N$spacingX": 40,
+=======
     "_N$spacingX": 0,
+>>>>>>> fenzhi
+    "_N$spacingY": 0,
+    "_N$verticalDirection": 1,
+    "_N$horizontalDirection": 0
+  },
+  {
+    "__type__": "cc.Node",
+<<<<<<< HEAD
+    "_name": "HandCardLayer",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 253
+    },
+    "_children": [
+      {
+        "__id__": 257
+      },
+      {
+        "__id__": 259
+      }
+    ],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+=======
+    "_name": "OutCardLayer",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 245
+    },
+    "_children": [
+      {
+        "__id__": 256
+      },
+      {
+        "__id__": 258
+      },
+>>>>>>> fenzhi
+      {
+        "__id__": 260
+      }
+    ],
+<<<<<<< HEAD
+    "_prefab": null,
+    "_id": "ca5vAffLBKIY7bGfMuht/9",
+=======
+    "_tag": -1,
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "_id": "fcfdfBVIJBPaPHn6ouSByY",
+>>>>>>> fenzhi
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+<<<<<<< HEAD
+      "x": 0,
+=======
+      "x": 0.5,
+>>>>>>> fenzhi
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 882,
+      "height": 120
+=======
+      "width": 0,
+      "height": 0
+>>>>>>> fenzhi
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+<<<<<<< HEAD
+      "y": 10
+=======
+      "y": 0
+>>>>>>> fenzhi
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Node",
+<<<<<<< HEAD
+    "_name": "HandCardLay",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 256
+=======
+    "_name": "OutCardLayer3",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 255
+>>>>>>> fenzhi
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+<<<<<<< HEAD
+        "__id__": 258
+      }
+    ],
+    "_prefab": null,
+    "_id": "c3qO1vG/dLTIckjhRLLLiD",
+=======
+        "__id__": 257
+      }
+    ],
+    "_prefab": null,
+    "_id": "bcNrhYQbpE17nyWltuSxIn",
+>>>>>>> fenzhi
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 842,
+      "height": 120
+=======
+      "width": 380,
+      "height": 80
+>>>>>>> fenzhi
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+<<<<<<< HEAD
+      "x": 0,
+      "y": 0
+=======
+      "x": -120,
+      "y": -45
+>>>>>>> fenzhi
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Layout",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+<<<<<<< HEAD
+      "__id__": 257
+=======
+      "__id__": 256
+>>>>>>> fenzhi
+    },
+    "_enabled": true,
+    "_layoutSize": {
+      "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 842,
+      "height": 120
+=======
+      "width": 383,
+      "height": 80
+>>>>>>> fenzhi
+    },
+    "_resize": 1,
+    "_N$layoutType": 1,
+    "_N$padding": 0,
+    "_N$cellSize": {
+      "__type__": "cc.Size",
+      "width": 40,
+      "height": 40
+    },
+    "_N$startAxis": 0,
+    "_N$paddingLeft": 0,
+    "_N$paddingRight": 0,
+    "_N$paddingTop": 0,
+    "_N$paddingBottom": 0,
+<<<<<<< HEAD
+    "_N$spacingX": -10,
+=======
+    "_N$spacingX": -18,
+>>>>>>> fenzhi
+    "_N$spacingY": 0,
+    "_N$verticalDirection": 1,
+    "_N$horizontalDirection": 0
+  },
+  {
+    "__type__": "cc.Node",
+<<<<<<< HEAD
+    "_name": "MoCardLayer",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 256
+=======
+    "_name": "OutCardLayer2",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 255
+>>>>>>> fenzhi
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+<<<<<<< HEAD
+    "_components": [],
+    "_prefab": null,
+    "_id": "173HGzEwRGTZPRTpNxUk3G",
+=======
+    "_components": [
+      {
+        "__id__": 259
+      }
+    ],
+    "_prefab": null,
+    "_id": "8epTL/5IVJtbYmHSivgEVA",
+>>>>>>> fenzhi
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 0,
+      "height": 0
+=======
+      "width": 380,
+      "height": 80
+>>>>>>> fenzhi
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+<<<<<<< HEAD
+      "x": 0,
+      "y": 0
+=======
+      "x": -120,
+      "y": -90
+>>>>>>> fenzhi
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+    "__type__": "cc.Layout",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+<<<<<<< HEAD
+      "__id__": 256
+=======
+      "__id__": 258
+>>>>>>> fenzhi
+    },
+    "_enabled": true,
+    "_layoutSize": {
+      "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 882,
+      "height": 120
+=======
+      "width": 461,
+      "height": 80
+>>>>>>> fenzhi
+    },
+    "_resize": 1,
+    "_N$layoutType": 1,
+    "_N$padding": 0,
+    "_N$cellSize": {
+      "__type__": "cc.Size",
+      "width": 40,
+      "height": 40
+    },
+    "_N$startAxis": 0,
+    "_N$paddingLeft": 0,
+    "_N$paddingRight": 0,
+    "_N$paddingTop": 0,
+    "_N$paddingBottom": 0,
+<<<<<<< HEAD
+    "_N$spacingX": 50,
+=======
+    "_N$spacingX": -18,
+>>>>>>> fenzhi
+    "_N$spacingY": 0,
+    "_N$verticalDirection": 1,
+    "_N$horizontalDirection": 0
+  },
+  {
+<<<<<<< HEAD
+=======
+    "__type__": "cc.Node",
+    "_name": "OutCardLayer1",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 255
+    },
+    "_children": [],
+    "_tag": -1,
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 261
+      }
+    ],
+    "_prefab": null,
+    "_id": "caJ9Gq+IxGxodC0o2NbwRj",
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_cascadeOpacityEnabled": true,
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0.5
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 380,
+      "height": 80
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -120,
+      "y": -137
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_localZOrder": 0,
+    "_globalZOrder": 0,
+    "_opacityModifyRGB": false,
+    "groupIndex": 0
+  },
+  {
+>>>>>>> fenzhi
+    "__type__": "cc.Layout",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+<<<<<<< HEAD
+      "__id__": 253
+=======
+      "__id__": 260
+>>>>>>> fenzhi
+    },
+    "_enabled": true,
+    "_layoutSize": {
+      "__type__": "cc.Size",
+<<<<<<< HEAD
+      "width": 300,
+      "height": 200
+=======
+      "width": 500,
+      "height": 80
+>>>>>>> fenzhi
+    },
+    "_resize": 1,
+    "_N$layoutType": 1,
+    "_N$padding": 0,
+    "_N$cellSize": {
+      "__type__": "cc.Size",
+      "width": 40,
+      "height": 40
+    },
+    "_N$startAxis": 0,
+    "_N$paddingLeft": 0,
+    "_N$paddingRight": 0,
+    "_N$paddingTop": 0,
+    "_N$paddingBottom": 0,
+<<<<<<< HEAD
+    "_N$spacingX": 0,
+=======
+    "_N$spacingX": -18,
+>>>>>>> fenzhi
     "_N$spacingY": 0,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0
@@ -12066,8 +12480,13 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
+<<<<<<< HEAD
       "x": -590,
       "y": -130
+=======
+      "x": -575,
+      "y": -160
+>>>>>>> fenzhi
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -12992,6 +13411,7 @@
       "__id__": 302
     },
     "HandCardNode": {
+<<<<<<< HEAD
       "__id__": 257
     },
     "PengGangNode": {
@@ -13002,6 +13422,18 @@
     },
     "MoCardNode": {
       "__id__": 259
+=======
+      "__id__": 250
+    },
+    "PengGangNode": {
+      "__id__": 247
+    },
+    "OutCardNode": {
+      "__id__": 255
+    },
+    "MoCardNode": {
+      "__id__": 252
+>>>>>>> fenzhi
     },
     "IPAdressLabel": {
       "__id__": 310
@@ -13277,8 +13709,13 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
+<<<<<<< HEAD
     "_scaleX": 1.2,
     "_scaleY": 1.2,
+=======
+    "_scaleX": 1,
+    "_scaleY": 1,
+>>>>>>> fenzhi
     "_position": {
       "__type__": "cc.Vec2",
       "x": -590,
@@ -13698,11 +14135,19 @@
     },
     "_rotationX": 0,
     "_rotationY": 0,
+<<<<<<< HEAD
     "_scaleX": 1.2,
     "_scaleY": 1.2,
     "_position": {
       "__type__": "cc.Vec2",
       "x": -500,
+=======
+    "_scaleX": 1,
+    "_scaleY": 1,
+    "_position": {
+      "__type__": "cc.Vec2",
+      "x": -515,
+>>>>>>> fenzhi
       "y": -40
     },
     "_skewX": 0,

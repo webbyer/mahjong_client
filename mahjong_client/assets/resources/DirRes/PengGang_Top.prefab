@@ -18,6 +18,7 @@
         "__id__": 2
       },
       {
+<<<<<<< HEAD
         "__id__": 15
       },
       {
@@ -28,13 +29,29 @@
       },
       {
         "__id__": 48
+=======
+        "__id__": 12
+      },
+      {
+        "__id__": 22
+      },
+      {
+        "__id__": 32
+      },
+      {
+        "__id__": 39
+>>>>>>> fenzhi
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [],
     "_prefab": {
+<<<<<<< HEAD
       "__id__": 51
+=======
+      "__id__": 42
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -85,15 +102,19 @@
       },
       {
         "__id__": 6
+<<<<<<< HEAD
       },
       {
         "__id__": 9
+=======
+>>>>>>> fenzhi
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 12
       },
       {
@@ -102,6 +123,16 @@
     ],
     "_prefab": {
       "__id__": 14
+=======
+        "__id__": 9
+      },
+      {
+        "__id__": 10
+      }
+    ],
+    "_prefab": {
+      "__id__": 11
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -326,6 +357,7 @@
     "sync": false
   },
   {
+<<<<<<< HEAD
     "__type__": "cc.Node",
     "_name": "blueMask",
     "_objFlags": 0,
@@ -419,6 +451,8 @@
     "sync": false
   },
   {
+=======
+>>>>>>> fenzhi
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
@@ -479,6 +513,7 @@
     },
     "_children": [
       {
+<<<<<<< HEAD
         "__id__": 16
       },
       {
@@ -486,12 +521,19 @@
       },
       {
         "__id__": 22
+=======
+        "__id__": 13
+      },
+      {
+        "__id__": 16
+>>>>>>> fenzhi
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 25
       },
       {
@@ -500,6 +542,16 @@
     ],
     "_prefab": {
       "__id__": 27
+=======
+        "__id__": 19
+      },
+      {
+        "__id__": 20
+      }
+    ],
+    "_prefab": {
+      "__id__": 21
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -542,18 +594,30 @@
     "_name": "Spr",
     "_objFlags": 0,
     "_parent": {
+<<<<<<< HEAD
       "__id__": 15
+=======
+      "__id__": 12
+>>>>>>> fenzhi
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 17
       }
     ],
     "_prefab": {
       "__id__": 18
+=======
+        "__id__": 14
+      }
+    ],
+    "_prefab": {
+      "__id__": 15
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -596,7 +660,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 16
+=======
+      "__id__": 13
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -635,18 +703,30 @@
     "_name": "bk",
     "_objFlags": 0,
     "_parent": {
+<<<<<<< HEAD
       "__id__": 15
+=======
+      "__id__": 12
+>>>>>>> fenzhi
     },
     "_children": [],
     "_tag": -1,
     "_active": false,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 20
       }
     ],
     "_prefab": {
       "__id__": 21
+=======
+        "__id__": 17
+      }
+    ],
+    "_prefab": {
+      "__id__": 18
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -689,7 +769,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 19
+=======
+      "__id__": 16
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -724,6 +808,7 @@
     "sync": false
   },
   {
+<<<<<<< HEAD
     "__type__": "cc.Node",
     "_name": "blueMask",
     "_objFlags": 0,
@@ -817,11 +902,17 @@
     "sync": false
   },
   {
+=======
+>>>>>>> fenzhi
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 15
+=======
+      "__id__": 12
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -849,11 +940,19 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 15
     },
     "_enabled": true,
     "Spr": {
       "__id__": 17
+=======
+      "__id__": 12
+    },
+    "_enabled": true,
+    "Spr": {
+      "__id__": 14
+>>>>>>> fenzhi
     },
     "id": -1
   },
@@ -877,6 +976,7 @@
     },
     "_children": [
       {
+<<<<<<< HEAD
         "__id__": 29
       },
       {
@@ -884,12 +984,19 @@
       },
       {
         "__id__": 35
+=======
+        "__id__": 23
+      },
+      {
+        "__id__": 26
+>>>>>>> fenzhi
       }
     ],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 38
       },
       {
@@ -898,6 +1005,16 @@
     ],
     "_prefab": {
       "__id__": 40
+=======
+        "__id__": 29
+      },
+      {
+        "__id__": 30
+      }
+    ],
+    "_prefab": {
+      "__id__": 31
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -940,18 +1057,30 @@
     "_name": "Spr",
     "_objFlags": 0,
     "_parent": {
+<<<<<<< HEAD
       "__id__": 28
+=======
+      "__id__": 22
+>>>>>>> fenzhi
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 30
       }
     ],
     "_prefab": {
       "__id__": 31
+=======
+        "__id__": 24
+      }
+    ],
+    "_prefab": {
+      "__id__": 25
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -994,7 +1123,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 29
+=======
+      "__id__": 23
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1033,18 +1166,30 @@
     "_name": "bk",
     "_objFlags": 0,
     "_parent": {
+<<<<<<< HEAD
       "__id__": 28
+=======
+      "__id__": 22
+>>>>>>> fenzhi
     },
     "_children": [],
     "_tag": -1,
     "_active": false,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 33
       }
     ],
     "_prefab": {
       "__id__": 34
+=======
+        "__id__": 27
+      }
+    ],
+    "_prefab": {
+      "__id__": 28
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -1087,7 +1232,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 32
+=======
+      "__id__": 26
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1122,6 +1271,7 @@
     "sync": false
   },
   {
+<<<<<<< HEAD
     "__type__": "cc.Node",
     "_name": "blueMask",
     "_objFlags": 0,
@@ -1176,10 +1326,13 @@
     "groupIndex": 0
   },
   {
+=======
+>>>>>>> fenzhi
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 35
     },
     "_enabled": true,
@@ -1220,6 +1373,9 @@
     "_objFlags": 0,
     "node": {
       "__id__": 28
+=======
+      "__id__": 22
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1247,11 +1403,19 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 28
     },
     "_enabled": true,
     "Spr": {
       "__id__": 30
+=======
+      "__id__": 22
+    },
+    "_enabled": true,
+    "Spr": {
+      "__id__": 24
+>>>>>>> fenzhi
     },
     "id": -1
   },
@@ -1275,13 +1439,18 @@
     },
     "_children": [
       {
+<<<<<<< HEAD
         "__id__": 42
+=======
+        "__id__": 33
+>>>>>>> fenzhi
       }
     ],
     "_tag": -1,
     "_active": false,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 45
       },
       {
@@ -1290,6 +1459,16 @@
     ],
     "_prefab": {
       "__id__": 47
+=======
+        "__id__": 36
+      },
+      {
+        "__id__": 37
+      }
+    ],
+    "_prefab": {
+      "__id__": 38
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -1332,18 +1511,30 @@
     "_name": "Spr",
     "_objFlags": 0,
     "_parent": {
+<<<<<<< HEAD
       "__id__": 41
+=======
+      "__id__": 32
+>>>>>>> fenzhi
     },
     "_children": [],
     "_tag": -1,
     "_active": true,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 43
       }
     ],
     "_prefab": {
       "__id__": 44
+=======
+        "__id__": 34
+      }
+    ],
+    "_prefab": {
+      "__id__": 35
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -1386,7 +1577,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 42
+=======
+      "__id__": 33
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1425,7 +1620,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 41
+=======
+      "__id__": 32
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -1453,11 +1652,19 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 41
     },
     "_enabled": true,
     "Spr": {
       "__id__": 43
+=======
+      "__id__": 32
+    },
+    "_enabled": true,
+    "Spr": {
+      "__id__": 34
+>>>>>>> fenzhi
     },
     "id": -1
   },
@@ -1484,11 +1691,19 @@
     "_active": false,
     "_components": [
       {
+<<<<<<< HEAD
         "__id__": 49
       }
     ],
     "_prefab": {
       "__id__": 50
+=======
+        "__id__": 40
+      }
+    ],
+    "_prefab": {
+      "__id__": 41
+>>>>>>> fenzhi
     },
     "_id": "",
     "_opacity": 255,
@@ -1531,7 +1746,11 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
+<<<<<<< HEAD
       "__id__": 48
+=======
+      "__id__": 39
+>>>>>>> fenzhi
     },
     "_enabled": true,
     "_spriteFrame": {
