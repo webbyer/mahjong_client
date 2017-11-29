@@ -495,10 +495,6 @@ const CardMgr = cc.Class({
                 str = "OutCard_Left";
                 preConfif = CONFIG.RIGHT;
                 otherDes(handNode);
-<<<<<<< HEAD
-
-=======
->>>>>>> fenzhi
                 break;
             }
             case cc.dd.gameCfg.PLAYER_SEAT_LOCAL.TOP: {
@@ -562,19 +558,6 @@ const CardMgr = cc.Class({
             } else {
                 addNode.addChild(outCard);
             }
-<<<<<<< HEAD
-            if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {
-                const cardid = outCard.getComponent("CardSpr").id;
-                if(cardid == 4||cardid == 6 || cardid == 8 || cardid == 15){ // 7tong 是多少
-                    outCard.getChildByName("Spr").setScaleX(-0.5);
-                    outCard.getChildByName("Spr").rotation = 93;
-                }
-            }
-            // else {
-            //     outCard.getChildByName("Spr").rotation = 90;
-            // }
-=======
->>>>>>> fenzhi
             outCard.getChildByName("Sign").active = true;
             this.setCurOutCard(outCard);
         }

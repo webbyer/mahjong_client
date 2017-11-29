@@ -4,157 +4,6 @@
     <dict>
         <key>frames</key>
         <dict>
-<<<<<<< HEAD
-            <key>ro_bg_fk@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{268,92}</string>
-                <key>spriteSourceSize</key>
-                <string>{268,92}</string>
-                <key>textureRect</key>
-                <string>{{482,0},{268,92}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_bg_name@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{252,92}</string>
-                <key>spriteSourceSize</key>
-                <string>{252,92}</string>
-                <key>textureRect</key>
-                <string>{{750,0},{252,92}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_cjfj@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{376,136}</string>
-                <key>spriteSourceSize</key>
-                <string>{376,136}</string>
-                <key>textureRect</key>
-                <string>{{64,92},{376,136}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_fx@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{106,90}</string>
-                <key>spriteSourceSize</key>
-                <string>{106,90}</string>
-                <key>textureRect</key>
-                <string>{{376,0},{106,90}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_jrfj@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{377,164}</string>
-                <key>spriteSourceSize</key>
-                <string>{377,164}</string>
-                <key>textureRect</key>
-                <string>{{440,92},{377,164}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_sz@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{106,90}</string>
-                <key>spriteSourceSize</key>
-                <string>{106,90}</string>
-                <key>textureRect</key>
-                <string>{{270,0},{106,90}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_wf@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{106,90}</string>
-                <key>spriteSourceSize</key>
-                <string>{106,90}</string>
-                <key>textureRect</key>
-                <string>{{164,0},{106,90}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_zj@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{64,100}</string>
-                <key>spriteSourceSize</key>
-                <string>{64,100}</string>
-                <key>textureRect</key>
-                <string>{{0,92},{64,100}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_btn_zrfk@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{106,90}</string>
-                <key>spriteSourceSize</key>
-                <string>{106,90}</string>
-                <key>textureRect</key>
-                <string>{{58,0},{106,90}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>ro_fk@2x.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{58,36}</string>
-                <key>spriteSourceSize</key>
-                <string>{58,36}</string>
-                <key>textureRect</key>
-                <string>{{0,0},{58,36}}</string>
-                <key>textureRotated</key>
-                <false/>
-=======
             <key>CreateRoomBtn.png</key>
             <dict>
                 <key>frame</key>
@@ -401,25 +250,11 @@
                 <string>{{0,0},{1280,131}}</string>
                 <key>sourceSize</key>
                 <string>{1280,131}</string>
->>>>>>> fenzhi
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-<<<<<<< HEAD
-            <integer>3</integer>
-            <key>pixelFormat</key>
-            <string>RGBA8888</string>
-            <key>premultiplyAlpha</key>
-            <false/>
-            <key>realTextureFileName</key>
-            <string>Hall.png</string>
-            <key>size</key>
-            <string>{1002,256}</string>
-            <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:57c7477b340e93bcdb672c6851cc70c7:63cf54c1133fae1b29f937176691df5d:832704132c6d8c74b176189b527c6d86$</string>
-=======
             <integer>2</integer>
             <key>realTextureFileName</key>
             <string>Hall.png</string>
@@ -427,7 +262,6 @@
             <string>{2048,512}</string>
             <key>smartupdate</key>
             <string>$TexturePacker:SmartUpdate:24067a7c042e32ff426eda1d33646338$</string>
->>>>>>> fenzhi
             <key>textureFileName</key>
             <string>Hall.png</string>
         </dict>
