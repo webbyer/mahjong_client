@@ -35,7 +35,7 @@ const MJEventManager = cc.Class({
                 body.did = deviceid;
             }
         }else{
-            body.did = "60eb20b0-8fd2-4b5c-805f-fecb298662db";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
+            body.did = "7d5d9880-486b-45cf-9346-795954ba3968";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
         }//26ee669399b2ee1b //
 
         switch (event) {
