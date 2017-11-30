@@ -558,6 +558,13 @@ const CardMgr = cc.Class({
             } else {
                 addNode.addChild(outCard);
             }
+            if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
+                const cardid = outCard.getComponent("CardSpr").id;
+                if(cardid == 4||cardid == 6 || cardid == 8 || cardid == 15){
+                    outCard.getChildByName("Spr").setScaleX(-0.5);
+                    outCard.getChildByName("Spr").rotation = 93;
+                }
+            }
             outCard.getChildByName("Sign").active = true;
             this.setCurOutCard(outCard);
         }
