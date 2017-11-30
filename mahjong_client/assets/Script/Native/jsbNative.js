@@ -281,7 +281,7 @@ cc.dd.shareZongZhanJiToWXFriends = () => {
                 cc.log('Remote is find' + cc.dd.user.zongzjpath);
                 // 测试下在安卓是否能读取图片
                 jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity","jsInitiateWXFriendsSharePicWithImagePath",
-                    "(Ljava/lang/String;Ljava/lang/String;)V",cc.dd.user.zongzjpath,"");
+                    "(Ljava/lang/String;Ljava/lang/String;)V",cc.dd.user.zongzjpath,"WECHAT_SHARE_TYPE_TALK");
             }else {
                 cc.log('Remote is not find' + cc.dd.user.zongzjpath);
             }
@@ -297,7 +297,7 @@ cc.dd.shareZongZhanJiToWXMoment = () => {
         cc.log("分享总战绩到微信朋友圈");
         if (cc.sys.os == cc.sys.OS_ANDROID) {
             jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity","jsInitiateWXFriendsSharePicWithImagePath",
-                "(Ljava/lang/String;Ljava/lang/String;)V",cc.dd.user.zongzjpath,"");
+                "(Ljava/lang/String;Ljava/lang/String;)V",cc.dd.user.zongzjpath,"WECHAT_SHARE_TYPE_FRENDS");
         }else {
             jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsSharePicWithImagePath:whitsence:",cc.dd.user.zongzjpath,"1");
         }
