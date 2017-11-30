@@ -79,8 +79,8 @@ cc.Class({
             if (cc.dd.room._subcommand == 4) {
                 this.showBtn(true); // 显示总战绩按钮
             } else {
-                // this.showBtn(false);
-                this.showBtn(true); // 测试用 正式为上面
+                this.showBtn(false);
+                // this.showBtn(true); // 测试用 正式为上面
             }
         }
         // 胡牌类型

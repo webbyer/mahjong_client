@@ -14,11 +14,11 @@ cc.Class({
             default:null,
             type: cc.Label,
         },
-        cardTitle:{
+        CardTitle:{
             default:null,
             type: cc.Label,
         },
-        cardContent:{
+        CardContent:{
             default:null,
             type: cc.Label,
         },
@@ -83,12 +83,12 @@ cc.Class({
         }
         if(cc.dd.user.getCardState().unlimited === true) {
             this.RoomCard.string = "无限畅打";
-            this.cardTitle.string = cc.dd.user.getCardState().unlimitedshowdetail[0]
-            this.cardContent.string = cc.dd.user.getCardState().unlimitedshowdetail[1]
+            this.CardTitle.string = cc.dd.user.getCardState().unlimitedshowdetail[0];
+            this.CardContent.string = cc.dd.user.getCardState().unlimitedshowdetail[1]
         }else {
             this.RoomCard.string = '次卡';
-            this.cardTitle.string = "数量 :";
-            this.cardContent.string = num + '';
+            this.CardTitle.string = '数量 :';
+            this.CardContent.string = num + '';
         }
     },
     setAvatarSpriteFrame(sfurl) {
