@@ -838,7 +838,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -380,
+      "x": -365,
       "y": -280
     },
     "_skewX": 0,
@@ -1094,7 +1094,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -160,
+      "x": -140,
       "y": -280
     },
     "_skewX": 0,
@@ -1285,7 +1285,7 @@
       "__id__": 1
     },
     "component": "ZongZhanJi",
-    "handler": "onClickShareBtn",
+    "handler": "onClickShareToMomentsBtn",
     "customEventData": ""
   },
   {
@@ -1350,7 +1350,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": 390,
+      "x": 370,
       "y": -280
     },
     "_skewX": 0,
