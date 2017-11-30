@@ -222,6 +222,17 @@ const CardMgr = cc.Class({
                     needCre = false;
                     destoryNum = 1;
                     item.getChildByName("GangCard").active = true;
+                    if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
+                            if(pengOrGangId == 4||pengOrGangId == 6 || pengOrGangId == 8 || pengOrGangId == 15){
+                                item.children.forEach((citem,cindex) => {
+                                    if(cindex < 4) {
+                                    citem.getChildByName("Spr").setScaleX(-0.4);
+                                    citem.getChildByName("Spr").setScaleY(0.3);
+                                    citem.getChildByName("Spr").rotation = 90;
+                                    }
+                                });
+                            }
+                    }
                 }
             });
         }
@@ -316,6 +327,15 @@ const CardMgr = cc.Class({
                     const pos_x = p_node.childrenCount * CONFIG.RIGHT.PENG_GANG_X;
                     const pos_y = CONFIG.RIGHT.PENG_GANE_INIT_Y + (p_node.childrenCount * CONFIG.RIGHT.PENG_GANG_Y);
                     pengGang.setPosition(cc.p(pos_x, pos_y));
+                    if(pengOrGangId == 4||pengOrGangId == 6 || pengOrGangId == 8 || pengOrGangId == 15){
+                        pengGang.children.forEach((citem,cindex) => {
+                            if(cindex < 4) {
+                            citem.getChildByName("Spr").setScaleX(-0.4);
+                            citem.getChildByName("Spr").setScaleY(0.3);
+                            citem.getChildByName("Spr").rotation = 90;
+                        }
+                    });
+                    }
                 }
                 break;
             }
@@ -368,7 +388,14 @@ const CardMgr = cc.Class({
             let index = 0;
             card.forEach((item) => {
                 if (item.name !== "AnGang" && item.name !== "GangCard") {
-                    item.getComponent("CardSpr").initCard(data.straight[index]);
+                    if(index <= 2){
+                        item.getComponent("CardSpr").initCard(data.straight[index]);
+                        if(data.straight[index] == 4||data.straight[index] == 6 || data.straight[index] == 8 || data.straight[index] == 15){
+                            item.getChildByName("Spr").setScaleX(-0.4);
+                            item.getChildByName("Spr").setScaleY(0.3);
+                            item.getChildByName("Spr").rotation = 90;
+                        }
+                    }
                     index ++;
                 }
             });
