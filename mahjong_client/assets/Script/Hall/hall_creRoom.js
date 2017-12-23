@@ -12,6 +12,11 @@ cc.Class({
             type: cc.Toggle,
             tooltip: "玩法：夹胡",
         },
+        QixdToggle: {
+            default: null,
+            type: cc.Toggle,
+            tooltip: "玩法：七小队",
+        },
         CreateRoom: {
             default: null,
             type: cc.Node,
@@ -36,7 +41,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.JuShu = 16;
+        this.JuShu = 8;
         this.FanShu = 1;
         this.WanFa = [1];
         if (cc.dd.user.getUserInfo().isagent == 1) {
@@ -54,15 +59,26 @@ cc.Class({
     onWanFaClick(event, custom) {
         const item = cc.dd.hall_config.CYMJ_WF[custom];
         if (event.isChecked) {
-            if (item == 3 || item == 5){
+            if (item == 3 || item == 5 || item == 9){
                 this.WanFa.push(item);
                 if (item == 3){
-                    if(this.WanFa.indexOf(5) != -1) {
-                        //取消勾选🈚️
-                        this.JiahuToggle.uncheck();
+                    if(this.WanFa.indexOf(5) != -1 || this.WanFa.indexOf(9) != -1) {
+                        if(this.WanFa.indexOf(5) != -1){
+                            // 夹胡与会不同时
+                            this.JiahuToggle.uncheck();
+                        }
+                        if(this.WanFa.indexOf(9) != -1){
+                            // 会与七小队不同时
+                            this.QixdToggle.uncheck();
+                        }
                     }
                 }
                 if (item == 5){
+                    if(this.WanFa.indexOf(3) != -1) {
+                        this.HuiToggle.uncheck();
+                    }
+                }
+                if(item == 9) {
                     if(this.WanFa.indexOf(3) != -1) {
                         this.HuiToggle.uncheck();
                     }

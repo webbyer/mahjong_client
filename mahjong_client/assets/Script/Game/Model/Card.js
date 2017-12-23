@@ -179,7 +179,7 @@ cc.Class({
         if (cc.dd.cardMgr.getHuiPai() === this.id) {
             return;
         }
-        this.node.runAction(cc.moveTo(0.1, cc.p(this._pos_x, this._pos_y + MOVE_Y)));
+        this.node.runAction(cc.moveTo(0.05, cc.p(this._pos_x, this._pos_y + MOVE_Y)));
         this.cardState = CARD_STATE.SELECT;
         cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
     },
@@ -187,7 +187,7 @@ cc.Class({
      *  麻将取消选择
      */
     cancelSelect() {
-        this.node.runAction(cc.moveTo(0.1, cc.p(this._pos_x, this._pos_y)));
+        this.node.runAction(cc.moveTo(0.05, cc.p(this._pos_x, this._pos_y)));
         this.cardState = CARD_STATE.NORMAL;
         cc.dd.cardMgr.cancelSingleOutMask();
     },

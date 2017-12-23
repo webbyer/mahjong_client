@@ -9,6 +9,8 @@ module.exports = {
         JIA_HU: 5, // 夹胡
         DIANPAO_BAOSANJIA: 6,// 点炮包三家
         QING_YI_SE: 7, // 清一色
+        SHI_GUI_YI: 8, // 四归一
+        QI_XIAO_DUI: 9, // 七小队
     },
     EXC_CARD_TYPE: {
         EXC_CHIKA: "roomcard",

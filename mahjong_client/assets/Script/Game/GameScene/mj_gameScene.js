@@ -36,6 +36,8 @@ const PLAY_OPERA_NAME = [
     "夹胡",
     "点炮包三家",
     "清一色",
+    "四归一",
+    "七小队",
 ];
 const PLAY_OPERA_NAME_ORAL = [
     null,
@@ -46,6 +48,8 @@ const PLAY_OPERA_NAME_ORAL = [
     "夹胡",
     "点炮赔三家",
     "清一色",
+    "四归一",
+    "七小队",
 ];
 
 cc.Class({
@@ -382,7 +386,7 @@ cc.Class({
                 if(!str){
                     str = PLAY_OPERA_NAME[item];
                 }else {
-                    str = str + " " + PLAY_OPERA_NAME[item];
+                    str = str + "\n" + PLAY_OPERA_NAME[item];
                 }
             });
             str = str + "\n底番" + data.room.basicraise + "倍";

@@ -15,10 +15,10 @@ const CONFIG = {
         HAND_CARD_X: -7, // -11
         HAND_CARD_Y: -28, // -32
         HAND_CARD_INIT_Y: -50,
-        PENG_GANG_X: 30,
+        PENG_GANG_X: -30,
         PENG_GANG_Y: 110, // 85
         PENG_GANE_INIT_Y: 40,
-        OUT_CARD_X: 5.5,
+        OUT_CARD_X: -5.5,
         OUT_CARD_Y: 30,
         OUT_CARD_INIT_Y: 33.5,  // 出牌的第一张位置x为：-(length - 1) * 5.5
     },
@@ -222,17 +222,17 @@ const CardMgr = cc.Class({
                     needCre = false;
                     destoryNum = 1;
                     item.getChildByName("GangCard").active = true;
-                    if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
-                            if(pengOrGangId == 4||pengOrGangId == 6 || pengOrGangId == 8 || pengOrGangId == 15){
-                                item.children.forEach((citem,cindex) => {
-                                    if(cindex < 4) {
-                                    citem.getChildByName("Spr").setScaleX(-0.4);
-                                    citem.getChildByName("Spr").setScaleY(0.3);
-                                    citem.getChildByName("Spr").rotation = 90;
-                                    }
-                                });
-                            }
-                    }
+                    // if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
+                    //         if(pengOrGangId == 4||pengOrGangId == 6 || pengOrGangId == 8 || pengOrGangId == 15){
+                    //             item.children.forEach((citem,cindex) => {
+                    //                 if(cindex < 4) {
+                    //                 citem.getChildByName("Spr").setScaleX(-0.4);
+                    //                 citem.getChildByName("Spr").setScaleY(0.3);
+                    //                 citem.getChildByName("Spr").rotation = 90;
+                    //                 }
+                    //             });
+                    //         }
+                    // }
                 }
             });
         }
@@ -320,22 +320,22 @@ const CardMgr = cc.Class({
                 break;
             }
             case cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT: {
-                preStr = "PengGang_Left";
+                preStr = "pengGang_Right";
                 otherFunc(handNode);
                 if (needCre) {
                     pengGang = cc.instantiate(cc.dd.dirRes[preStr.toUpperCase()]);
                     const pos_x = p_node.childrenCount * CONFIG.RIGHT.PENG_GANG_X;
                     const pos_y = CONFIG.RIGHT.PENG_GANE_INIT_Y + (p_node.childrenCount * CONFIG.RIGHT.PENG_GANG_Y);
                     pengGang.setPosition(cc.p(pos_x, pos_y));
-                    if(pengOrGangId == 4||pengOrGangId == 6 || pengOrGangId == 8 || pengOrGangId == 15){
-                        pengGang.children.forEach((citem,cindex) => {
-                            if(cindex < 4) {
-                            citem.getChildByName("Spr").setScaleX(-0.4);
-                            citem.getChildByName("Spr").setScaleY(0.3);
-                            citem.getChildByName("Spr").rotation = 90;
-                        }
-                    });
-                    }
+                    // if(pengOrGangId == 4||pengOrGangId == 6 || pengOrGangId == 8 || pengOrGangId == 15){
+                    //     pengGang.children.forEach((citem,cindex) => {
+                    //         if(cindex < 4) {
+                    //         citem.getChildByName("Spr").setScaleX(-0.4);
+                    //         citem.getChildByName("Spr").setScaleY(0.3);
+                    //         citem.getChildByName("Spr").rotation = 90;
+                    //     }
+                    // });
+                    // }
                 }
                 break;
             }
@@ -390,13 +390,13 @@ const CardMgr = cc.Class({
                 if (item.name !== "AnGang" && item.name !== "GangCard") {
                     if(index <= 2){
                         item.getComponent("CardSpr").initCard(data.straight[index]);
-                        if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
-                            if (data.straight[index] == 4 || data.straight[index] == 6 || data.straight[index] == 8 || data.straight[index] == 15) {
-                                item.getChildByName("Spr").setScaleX(-0.4);
-                                item.getChildByName("Spr").setScaleY(0.3);
-                                item.getChildByName("Spr").rotation = 90;
-                            }
-                        }
+                        // if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
+                        //     if (data.straight[index] == 4 || data.straight[index] == 6 || data.straight[index] == 8 || data.straight[index] == 15) {
+                        //         item.getChildByName("Spr").setScaleX(-0.4);
+                        //         item.getChildByName("Spr").setScaleY(0.3);
+                        //         item.getChildByName("Spr").rotation = 90;
+                        //     }
+                        // }
                     }
                     index ++;
                 }
@@ -521,7 +521,7 @@ const CardMgr = cc.Class({
                 break;
             }
             case cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT: {
-                str = "OutCard_Left";
+                str = "OutCard_Right";
                 preConfif = CONFIG.RIGHT;
                 otherDes(handNode);
                 break;
@@ -587,13 +587,13 @@ const CardMgr = cc.Class({
             } else {
                 addNode.addChild(outCard);
             }
-            if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
-                const cardid = outCard.getComponent("CardSpr").id;
-                if(cardid == 4||cardid == 6 || cardid == 8 || cardid == 15){
-                    outCard.getChildByName("Spr").setScaleX(-0.5);
-                    outCard.getChildByName("Spr").rotation = 93;
-                }
-            }
+            // if (localSeat === cc.dd.gameCfg.PLAYER_SEAT_LOCAL.RIGHT) {// 翻转补丁
+            //     const cardid = outCard.getComponent("CardSpr").id;
+            //     if(cardid == 4||cardid == 6 || cardid == 8 || cardid == 15){
+            //         outCard.getChildByName("Spr").setScaleX(-0.5);
+            //         outCard.getChildByName("Spr").rotation = 93;
+            //     }
+            // }
             outCard.getChildByName("Sign").active = true;
             this.setCurOutCard(outCard);
         }
