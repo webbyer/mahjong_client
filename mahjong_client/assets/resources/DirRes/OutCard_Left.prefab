@@ -121,7 +121,7 @@
       "y": 14.9
     },
     "_skewX": 0,
-    "_skewY": -15,
+    "_skewY": -9,
     "_localZOrder": 0,
     "_globalZOrder": 0,
     "_opacityModifyRGB": false,
@@ -136,7 +136,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "26704f86-7533-4494-aaeb-5d49488d121a"
+      "__uuid__": "a718cd93-2f5a-48d0-8ff9-c8b76e8250de"
     },
     "_type": 0,
     "_sizeMode": 1,

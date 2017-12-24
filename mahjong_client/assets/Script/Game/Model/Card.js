@@ -29,6 +29,7 @@ cc.Class({
         this.node.on("touchstart", this._touchStart.bind(this));
         this.node.on("touchend", this._touchEnd.bind(this));
         this.node.on("touchcancel", this._touchCancel.bind(this));
+        // this.node.on("touchmove", this._touchMoved.bind(this));
         this._pos_x = this.node.getPositionX();
         this._pos_y = this.node.getPositionY();
         this._initCard();
@@ -171,6 +172,19 @@ cc.Class({
         if (this.CardZheZhao) {
             this.CardZheZhao.active = false;
         }
+    },
+    /**
+     *  麻将滑动触摸
+     * @private
+     */
+    _touchMoved(event) {
+        // cc.log(`触摸${event.getDelta()}`);
+        // cc.log(`触摸${event.getLocationY()}`);
+        let a = event.getDeltaX();
+        let b = event.getDeltaY();
+        this.node.x += a;
+        this.node.y += b;
+        cc.log(this.node.y);
     },
     /**
      *  麻将被选择
