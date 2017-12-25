@@ -21,6 +21,7 @@ const SoundConfig = {
     MAN: "resources/Game/Sound/man/",
     WOMAN: "resources/Game/Sound/woman/",
     COMMON:"resources/Game/Sound/common/",
+    PHRASE: "resources/Game/Sound/phrase/",
 };
 /**
  *  获取男声（两个参数同事传，默认为牌的音效，只传一个，怎默认为传的名字）
@@ -65,4 +66,11 @@ cc.dd.playEffect = (xb, v_1, v_2) => {
     } else {
         cc.dd.soundMgr.playSound(SoundConfig.getWoManSound(v_1, v_2));
     }
+};
+/**
+ *  播放常用短语音效的公用方法
+ * @param fileName 音频文件名
+ */
+cc.dd.playPhraseEffect = (fileName) => {
+    cc.dd.soundMgr.playSound(SoundConfig.PHRASE + fileName + ".mp3");
 };

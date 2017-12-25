@@ -142,8 +142,14 @@ const MJEventManager = cc.Class({
                 this.sendMessage(body);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP: {
+            case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REP: { // 请求总战绩
                 body.roomserialnumber = data;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REP: { // 请求发送短语或表情包
+                body.type = data.type;
+                body.msgid = data.msgid;
                 this.sendMessage(body);
                 break;
             }
@@ -306,6 +312,10 @@ const MJEventManager = cc.Class({
                 }else {
                     cc.dd.room.saveMsg(msgId,msgData);
                 }
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REQ: { // 用户重新上线
+                cc.dd.room.saveMsg(msgId,msgData);
                 break;
             }
             default: {

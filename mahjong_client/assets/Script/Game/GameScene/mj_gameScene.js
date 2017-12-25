@@ -217,7 +217,11 @@ cc.Class({
         userList.forEach((item, index) => {
             this.playerArr[index].active = true;
             let player_class = null;
-
+            // haiDiLao测试
+        // const card = this.playerArr[index].getChildByName("HuInfo").getChildByName("HaidlCard");
+        // const haidilao = this.playerArr[index].getChildByName("HuInfo").getChildByName("HaiDiLao");
+        // card.active = true;
+        // haidilao.active = true;
             // 手牌节点
             const handNode = this.playerArr[index].getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
 
@@ -793,7 +797,7 @@ cc.Class({
                 cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_HUCARD_REP);
             }
         }
-        const card = this.playerArr[localSeat - 1].getChildByName("HuInfo").getChildByName("HuCard");
+        const card = this.playerArr[localSeat - 1].getChildByName("HuInfo").getChildByName("HaidlCard");
         const haidilao = this.playerArr[localSeat - 1].getChildByName("HuInfo").getChildByName("HaiDiLao");
         card.getComponent("CardSpr").initCard(data.mopai);
         card.active = true;
@@ -1034,7 +1038,7 @@ cc.Class({
     // 给发言用户显示语音图标
     onRecievedPlayerMessage(data) {
         cc.dd.roomEvent.setIsCache(false);
-        var localSeat = null;
+        let localSeat = null;
         if(data) {
             localSeat = this.getLocalSeatByUserId(data.senduid);
         }else {
@@ -1106,6 +1110,23 @@ cc.Class({
             const zzj = cc.instantiate(prefab);
             zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl,cc.dd.room.roomserialnumber);
             this.node.addChild(zzj);
+        });
+    },
+    // 展示用户发送的表情包和短语
+    showUserEmojiOrPhrase(data) {
+        let localSeat = null;
+        if(data) {
+            localSeat = this.getLocalSeatByUserId(data.senduid);
+        }
+        const emojinode = this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("emoji");
+        if(data.type === 1) { // 短语
+
+        }else { // 表情包
+
+        }
+        cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
+            emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
+            emojinode.active = true;
         });
     },
 });

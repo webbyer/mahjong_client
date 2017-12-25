@@ -178,7 +178,7 @@ cc.Class({
      * @private
      */
     _touchMoved(event) {
-        // cc.log(`触摸${event.getDelta()}`);
+        cc.log(`触摸${event.getDeltaY()}`);
         // cc.log(`触摸${event.getLocationY()}`);
         let a = event.getDeltaX();
         let b = event.getDeltaY();

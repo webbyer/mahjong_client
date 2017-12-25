@@ -1,3 +1,9 @@
+const END_POS = {
+    x: 250,
+    y: -30,
+};
+const MOVE_TIME = 0.3;
+const WITHDRAW = 100;
 cc.Class({
     extends: cc.Component,
 
@@ -84,7 +90,31 @@ cc.Class({
         cc.dd.soundMgr.resumeAllSounds();
         cc.dd.room._selfRecording = false;
     },
-
+    // 表情和短语
+    onEmojiClick() {
+        if(this.showEmoji == true) {
+            this.showEmoji = false;
+            const moveAni = cc.moveTo(MOVE_TIME, cc.p(END_POS.x+WITHDRAW, END_POS.y));
+            this.node.getChildByName("EmojiPhrase").runAction(moveAni);
+            this.scheduleOnce(() => {
+                this.node.getChildByName("EmojiPhrase").active = false;
+            }, MOVE_TIME); //-0.1
+        }else {
+            this.showEmoji = true;
+            if (this.node.getChildByName("EmojiPhrase")){
+                this.node.getChildByName("EmojiPhrase").active = true;
+            }else {
+                cc.dd.Reload.loadPrefab("Game/Prefab/EmojiPhrase", (prefan) => {
+                    const emoji = cc.instantiate(prefan);
+                    this.node.addChild(emoji);
+                });
+            }
+            if (this.node.getChildByName("EmojiPhrase")) {
+                const moveAni = cc.moveTo(MOVE_TIME, cc.p(END_POS.x, END_POS.y));
+                this.node.getChildByName("EmojiPhrase").runAction(moveAni);
+            }
+        }
+    },
     // 语音 弃用
     onSoundClick() {
         if(!cc.sys.isMobile){

@@ -95,7 +95,8 @@ module.exports = {
         EVENT_YUYIN_COMING: 4019,   // 广播有用户发言了
         EVENT_USER_OFFLINE: 4005,   // 广播用户断线
         EVENT_USER_BACKONLINE: 4006,  // 广播断线用户上线了
-
+        EVENT_USER_SENT_EMOJI_REP: 2016, // 用户发送短语或表情请求
+        EVENT_USER_SENT_EMOJI_REQ: 5016, // 用户发送短语或表情广播
     },
     // 电池电量状态
     BATTERTY: {
