@@ -1124,7 +1124,7 @@ cc.Class({
             cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
                 emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
                 emojinode.active = true;
-
+                cc.dd.playPhraseEffect(data.msgid);
             });
         }else {  // 表情包
             cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {

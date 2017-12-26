@@ -3,7 +3,7 @@
   "_name": "emojiPicMove",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.6666666666666666,
+  "_duration": 0.5,
   "sample": 60,
   "speed": 1,
   "wrapMode": 1,
@@ -23,7 +23,7 @@
           "value": 90
         },
         {
-          "frame": 0.6666666666666666,
+          "frame": 0.5,
           "value": 50
         }
       ]

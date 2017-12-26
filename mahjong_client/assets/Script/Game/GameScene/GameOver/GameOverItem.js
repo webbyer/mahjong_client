@@ -42,6 +42,11 @@ cc.Class({
             type: cc.Node,
             tooltip: "庄家头像层",
         },
+        userHandCards: {
+            default: null,
+            type: cc.Node,
+            tooltip: "个人牌面",
+        },
     },
 
     // use this for initialization
@@ -58,10 +63,12 @@ cc.Class({
             if (data.tags.indexOf("庄") != -1) {
                 this.zhuangjia.active = true;
             }
-            this.GameTag.string = data.tags;
-        }else {
-            this.GameTag.string = "";
+            // this.GameTag.string = data.tags;
+            this.Nickname.string = data.nickname + " | " + data.tags;
         }
+        // else {
+            // this.GameTag.string = "";
+        // }
         cc.dd.setPlayerHead(data.wx_portrait,this.PlayerAvatar);
         let nlayout = this.NicknameLayout;
         if(data.UID === cc.dd.room._winneruid) {
@@ -101,6 +108,7 @@ cc.Class({
             this.ThridPoint.addChild(ponitstr);
             });
         });
+        this.presentCards(data);
     },
     // 黄局
     initHuangjuInfo(data) {
@@ -110,10 +118,12 @@ cc.Class({
             if (data.tags.indexOf("庄") != -1) {
                 this.zhuangjia.active = true;
             }
-            this.GameTag.string = data.tags;
-        }else {
-            this.GameTag.string = "";
+            // this.GameTag.string = data.tags;
+            this.Nickname.string = data.nickname + " | " + data.tags;
         }
+        // else {
+        //     this.GameTag.string = "";
+        // }
         cc.dd.Reload.loadAtlas("Game/Atlas/num", (atlas) => {
             cc.dd.Reload.loadPrefab("Game/Prefab/ShowTime", (prefab) => {
                 const ponitstr = cc.instantiate(prefab);
@@ -135,5 +145,71 @@ cc.Class({
             this.ThridPoint.addChild(ponitstr);
             });
         });
+    },
+    /**
+     *  用户牌面
+     * @param data
+     */
+    presentCards(data) {
+        let parantNode = this.userHandCards;
+        cc.dd.Reload.loadAtlas("Game/Atlas/gameOver", (atlas) => {
+            const handcardNode = parantNode.getChildByName("HandCard");
+        // 手牌
+        if (data.handcards) {
+            cc.dd.Reload.loadPrefab("Game/Prefab/GO_HandPoker", (prefab) => {
+                data.handcards.forEach((item) => {
+                const card = cc.instantiate(prefab);
+            const str = "little_card_" + (item +1);
+            card.getChildByName("Spr").getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(str);
+            // 加鬼牌遮罩 Giupai
+            if(cc.dd.room._guipai == item){
+                card.getChildByName("Giupai").active = true;
+            }
+            handcardNode.addChild(card);
+        });
+        });
+        }
+        // 碰的牌
+        cc.dd.Reload.loadPrefab("Game/Prefab/GO_PengGang", (prefab) => {
+            const pengGangNode = parantNode.getChildByName("PengGang");
+        if (data.pengcards) {
+            data.pengcards.forEach((item) => {
+                const penggang = cc.instantiate(prefab);
+                const str = "little_card_" + (item  + 1);
+                penggang.children.forEach((card) => {
+                card.getChildByName("Spr").getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(str);
+            });
+            pengGangNode.addChild(penggang);
+        });
+        }
+        // 杠的牌
+        if (data.gangcards) {
+            data.gangcards.forEach((item) => {
+                const penggang = cc.instantiate(prefab);
+            const str = "little_card_" + (item  + 1);
+            penggang.children.forEach((card) => {
+                card.getChildByName("Spr").getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(str);
+            card.active = true;
+        });
+            pengGangNode.addChild(penggang);
+        });
+        }
+        // 吃的牌
+        if (data.chicards) {
+            data.chicards.forEach((item) => {
+                const penggang = cc.instantiate(prefab);
+            let index = 0;
+            penggang.children.forEach((card) => {
+                const str = "little_card_" + (item[index]  + 1);
+            if (card.name !== "Gang") {
+                card.getChildByName("Spr").getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(str);
+                index ++;
+            }
+        });
+            pengGangNode.addChild(penggang);
+        });
+        }
+    });
+    });
     },
 });

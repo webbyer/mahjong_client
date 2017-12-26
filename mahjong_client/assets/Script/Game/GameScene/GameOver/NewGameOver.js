@@ -214,8 +214,8 @@ cc.Class({
                     card.getChildByName("Giupai").active = true;
                 }
                 handcardNode.addChild(card);
-        });
-        });
+                });
+            });
         }
         if(data.hucard || data.hucard == 0) {
             cc.dd.Reload.loadPrefab("Game/Prefab/GO_HandPoker", (prefab) => {

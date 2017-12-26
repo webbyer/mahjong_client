@@ -60,7 +60,6 @@ cc.Class({
         }
         let msgbody = {};
         if(customData.length <=3){
-            cc.log("biaoqing");
             msgbody.type = 2;
             msgbody.msgid = customData;
             //emoji
@@ -69,7 +68,6 @@ cc.Class({
             msgbody.type = 1;
             msgbody.msgid = customData;
             // 无动画 播放语音 禁用语音和短语按钮
-            cc.dd.playPhraseEffect(customData);
         }
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REP,msgbody);
     },

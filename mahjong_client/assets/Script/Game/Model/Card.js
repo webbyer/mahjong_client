@@ -3,6 +3,7 @@ const CARD_STATE = {
     NORMAL: 1, // 正常状态
     SELECT: 2, // 选中状态
     HAS_OUT: 3, // 已经打出去了
+    MOVE_CANCLE:4, // 滑动状态下的选中
 };
 const MOVE_Y = 20;
 cc.Class({
@@ -29,7 +30,7 @@ cc.Class({
         this.node.on("touchstart", this._touchStart.bind(this));
         this.node.on("touchend", this._touchEnd.bind(this));
         this.node.on("touchcancel", this._touchCancel.bind(this));
-        // this.node.on("touchmove", this._touchMoved.bind(this));
+        this.node.on("touchmove", this._touchMoved.bind(this));
         this._pos_x = this.node.getPositionX();
         this._pos_y = this.node.getPositionY();
         this._initCard();
@@ -88,6 +89,9 @@ cc.Class({
      */
     _touchEnd() {
         cc.log(`结束触摸`);
+        if(this.moving) {
+            this.moving = false;
+        }
         if (this.CardZheZhao) {
             this.CardZheZhao.active = false;
         }
@@ -161,6 +165,12 @@ cc.Class({
                 cc.dd.cardMgr.setIsCanOutCard(false);
                 break;
             }
+            case CARD_STATE.MOVE_CANCLE: {
+                cc.log(`滑动出牌取消`);
+                cc.dd.cardMgr.setIsCanOutCard(true);
+                this.cancelSelect();
+                break;
+            }
         }
     },
     /**
@@ -172,19 +182,50 @@ cc.Class({
         if (this.CardZheZhao) {
             this.CardZheZhao.active = false;
         }
+        if(this.moving) {
+            this.moving = false;
+            this._touchEnd();
+            // switch (this.cardState) {
+            // case CARD_STATE.NORMAL: {
+            //
+            //     break;
+            // }
+            // case CARD_STATE.SELECT: {
+            //
+            //     break;
+            // }
+            // case CARD_STATE.MOVE_CANCLE: {
+            //
+            //     break;
+            // }
+            // }
+        }
     },
     /**
      *  麻将滑动触摸
      * @private
      */
     _touchMoved(event) {
+        if (cc.dd.cardMgr.getHuiPai() === this.id) {
+            return;
+        }
         cc.log(`触摸${event.getDeltaY()}`);
         // cc.log(`触摸${event.getLocationY()}`);
+        this.moving = true;
         let a = event.getDeltaX();
         let b = event.getDeltaY();
         this.node.x += a;
         this.node.y += b;
         cc.log(this.node.y);
+        if(this.node.y > 19) {
+            cc.dd.cardMgr.setReadyOutCard(this.node);
+            cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
+            this.cardState = CARD_STATE.SELECT;
+        }else if(this.node.y < 0){
+            this.cardState = CARD_STATE.MOVE_CANCLE;
+        }else {
+            this.cardState = CARD_STATE.NORMAL;
+        }
     },
     /**
      *  麻将被选择
