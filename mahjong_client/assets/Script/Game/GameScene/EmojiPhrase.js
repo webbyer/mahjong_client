@@ -56,7 +56,7 @@ cc.Class({
             this.node.runAction(moveAni);
             this.scheduleOnce(() => {
                 this.node.active = false;
-            }, MOVE_TIME+0.2);
+            }, MOVE_TIME);
         }
         let msgbody = {};
         if(customData.length <=3){

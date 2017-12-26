@@ -184,7 +184,11 @@ cc.Class({
                 this.node.getComponent("mj_gameScene").showZongZhanJi(data);
                 break;
             }
-            default: {
+            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REQ: { // 5016,用户发送的短语表情广播
+                this.node.getComponent("mj_gameScene").showUserEmojiOrPhrase(data);
+                break;
+            }
+            default: {//showUserEmojiOrPhrase
                 cc.log(`unkown event: ${event}`);
             }
         }

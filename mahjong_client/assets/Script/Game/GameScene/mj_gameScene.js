@@ -51,7 +51,7 @@ const PLAY_OPERA_NAME_ORAL = [
     "四归一",
     "七小队",
 ];
-
+const MOVE_TIME = 4;
 cc.Class({
     extends: cc.Component,
 
@@ -1118,15 +1118,24 @@ cc.Class({
         if(data) {
             localSeat = this.getLocalSeatByUserId(data.senduid);
         }
+        this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").getComponent(cc.Button).interactable = false;
         const emojinode = this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("emoji");
-        if(data.type === 1) { // 短语
+        if(data.type === 1) {  // 短语
+            cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
+                emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
+                emojinode.active = true;
 
-        }else { // 表情包
-
+            });
+        }else {  // 表情包
+            cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
+                emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
+                emojinode.active = true;
+                emojinode.getComponent(cc.Animation).play();
+            });
         }
-        cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
-            emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
-            emojinode.active = true;
-        });
+        this.scheduleOnce(() => {
+            emojinode.active = false;
+            this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").getComponent(cc.Button).interactable = true;
+        }, MOVE_TIME);
     },
 });
