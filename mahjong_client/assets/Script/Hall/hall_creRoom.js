@@ -15,7 +15,7 @@ cc.Class({
         QixdToggle: {
             default: null,
             type: cc.Toggle,
-            tooltip: "玩法：七小队",
+            tooltip: "玩法：七小对",
         },
         CreateRoom: {
             default: null,

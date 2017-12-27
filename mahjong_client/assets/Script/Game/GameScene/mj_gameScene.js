@@ -37,7 +37,7 @@ const PLAY_OPERA_NAME = [
     "点炮包三家",
     "清一色",
     "四归一",
-    "七小队",
+    "七小对",
 ];
 const PLAY_OPERA_NAME_ORAL = [
     null,
@@ -49,7 +49,7 @@ const PLAY_OPERA_NAME_ORAL = [
     "点炮赔三家",
     "清一色",
     "四归一",
-    "七小队",
+    "七小对",
 ];
 const MOVE_TIME = 4;
 cc.Class({
@@ -1081,6 +1081,10 @@ cc.Class({
             this.scheduleOnce(function() {
                 this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").active = false;
                 cc.dd.soundMgr.resumeAllSounds();
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = true;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = false;
             }, 1.5);
         }
     },
@@ -1118,7 +1122,8 @@ cc.Class({
         if(data) {
             localSeat = this.getLocalSeatByUserId(data.senduid);
         }
-        this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").getComponent(cc.Button).interactable = false;
+        this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
+        this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
         const emojinode = this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("emoji");
         if(data.type === 1) {  // 短语
             cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
@@ -1135,7 +1140,8 @@ cc.Class({
         }
         this.scheduleOnce(() => {
             emojinode.active = false;
-            this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").getComponent(cc.Button).interactable = true;
+        this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
+        this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
         }, MOVE_TIME);
     },
 });

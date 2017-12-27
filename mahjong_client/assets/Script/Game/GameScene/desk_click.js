@@ -30,6 +30,8 @@ cc.Class({
     onLoad: function () {
         this.RecordBTN.on('touchstart',function (event) {
             this.count = 0;
+            this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
+            this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
             this.callback = function () {
                 if (this.count === 179) {
                     cc.log("achieve179:");
@@ -50,17 +52,24 @@ cc.Class({
             });
             cc.dd.startRecordingWithGvoice();
             cc.dd.soundMgr.pauseAllSounds();
+
         },this);
         this.RecordBTN.on('touchend',function (event) {
             if(this.callback) {
                 this.unschedule(this.callback);
                 this.stopRecordingWithGvoiceSDk();
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = true;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = false;
             }
         },this);
         this.RecordBTN.on('touchcancel',function (event) {
             if(this.callback) {
                 this.unschedule(this.callback);
                 this.stopRecordingWithGvoiceSDk();
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = true;
+                this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = false;
             }
         },this);
     },

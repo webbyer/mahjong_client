@@ -6,106 +6,124 @@
         <dict>
             <key>duibao.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,154},{301,139}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
+                <key>spriteSize</key>
+                <string>{297,141}</string>
+                <key>spriteSourceSize</key>
+                <string>{297,141}</string>
+                <key>textureRect</key>
+                <string>{{299,138},{297,141}}</string>
+                <key>textureRotated</key>
                 <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{301,139}}</string>
-                <key>sourceSize</key>
-                <string>{301,139}</string>
             </dict>
             <key>gangshanghua.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,2},{392,150}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{392,150}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{392,150}</string>
+                <key>spriteSourceSize</key>
+                <string>{392,150}</string>
+                <key>textureRect</key>
+                <string>{{596,138},{392,150}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>huangju.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,432},{245,138}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{245,138}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{245,138}</string>
+                <key>spriteSourceSize</key>
+                <string>{245,138}</string>
+                <key>textureRect</key>
+                <string>{{743,0},{245,138}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>loubao.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{305,154},{299,139}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{299,139}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{299,139}</string>
+                <key>spriteSourceSize</key>
+                <string>{299,139}</string>
+                <key>textureRect</key>
+                <string>{{0,138},{299,139}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>pinghu.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{249,455},{230,133}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
+                <key>spriteSize</key>
+                <string>{230,131}</string>
+                <key>spriteSourceSize</key>
+                <string>{230,131}</string>
+                <key>textureRect</key>
+                <string>{{0,0},{230,131}}</string>
+                <key>textureRotated</key>
                 <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{230,133}}</string>
-                <key>sourceSize</key>
-                <string>{230,133}</string>
             </dict>
             <key>sihui.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,295},{300,135}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{300,135}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{300,135}</string>
+                <key>spriteSourceSize</key>
+                <string>{300,135}</string>
+                <key>textureRect</key>
+                <string>{{443,0},{300,135}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
             <key>zimo.png</key>
             <dict>
-                <key>frame</key>
-                <string>{{2,572},{213,133}}</string>
-                <key>offset</key>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
                 <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{213,133}}</string>
-                <key>sourceSize</key>
+                <key>spriteSize</key>
                 <string>{213,133}</string>
+                <key>spriteSourceSize</key>
+                <string>{213,133}</string>
+                <key>textureRect</key>
+                <string>{{230,0},{213,133}}</string>
+                <key>textureRotated</key>
+                <false/>
             </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
-            <integer>2</integer>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
             <key>realTextureFileName</key>
             <string>hutype.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{988,288}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b864979266f5e8dfe966d36298455460$</string>
+            <string>$TexturePacker:SmartUpdate:b47eb21eb873600e843daacceae1f741:0719d2018f2db0ebea138d7ec5adb83c:634a1b2b821266006ea6276037345b23$</string>
             <key>textureFileName</key>
             <string>hutype.png</string>
         </dict>
