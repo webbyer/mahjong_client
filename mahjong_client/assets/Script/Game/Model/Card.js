@@ -209,14 +209,17 @@ cc.Class({
         if (cc.dd.cardMgr.getHuiPai() === this.id) {
             return;
         }
-        cc.log(`触摸${event.getDeltaY()}`);
+        if (this.CardZheZhao) {
+            this.CardZheZhao.active = true;
+        }
+        // cc.log(`触摸${event.getDeltaY()}`);
         // cc.log(`触摸${event.getLocationY()}`);
         this.moving = true;
         let a = event.getDeltaX();
         let b = event.getDeltaY();
         this.node.x += a;
         this.node.y += b;
-        cc.log(this.node.y);
+        cc.log(this.node.x);
         if(this.node.y > 19) {
             cc.dd.cardMgr.setReadyOutCard(this.node);
             cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
@@ -225,6 +228,9 @@ cc.Class({
             this.cardState = CARD_STATE.MOVE_CANCLE;
         }else {
             this.cardState = CARD_STATE.NORMAL;
+        }
+        if(this.node.x > -920) {
+            this.cardState = CARD_STATE.MOVE_CANCLE;
         }
     },
     /**
