@@ -229,7 +229,7 @@ cc.Class({
         }else {
             this.cardState = CARD_STATE.NORMAL;
         }
-        if(this.node.x > -920) {
+        if(this.node.x < -920) {
             this.cardState = CARD_STATE.MOVE_CANCLE;
         }
     },
