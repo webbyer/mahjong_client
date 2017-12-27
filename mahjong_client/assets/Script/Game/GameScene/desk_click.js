@@ -29,9 +29,9 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         this.RecordBTN.on('touchstart',function (event) {
-            this.count = 0;
             this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
             this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
+            this.count = 0;
             this.callback = function () {
                 if (this.count === 179) {
                     cc.log("achieve179:");
@@ -39,12 +39,18 @@ cc.Class({
                     this.unschedule(this.callback);
                     this.callback = null;
                 }
-                if(!cc.dd.room._selfRecording) {
+                // if (this.count === 1) {
+
+                    // this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
+                    // this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
+                // }
+                if (!cc.dd.room._selfRecording) {
                     cc.dd.room._selfRecording = true;
                 }
                 this.count++;
                 cc.log(this.count);
             }
+
             this.schedule(this.callback, 1);
             cc.dd.Reload.loadPrefab("Game/Prefab/Recording", (prefan) => {
                 const recording = cc.instantiate(prefan);
@@ -52,14 +58,18 @@ cc.Class({
             });
             cc.dd.startRecordingWithGvoice();
             cc.dd.soundMgr.pauseAllSounds();
-
         },this);
         this.RecordBTN.on('touchend',function (event) {
             if(this.callback) {
                 this.unschedule(this.callback);
                 this.stopRecordingWithGvoiceSDk();
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = true;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = false;
+                if(this.count <= 1) {
+                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
+                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
+                }else {
+                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = true;
+                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = false;
+                }
             }
         },this);
         this.RecordBTN.on('touchcancel',function (event) {
