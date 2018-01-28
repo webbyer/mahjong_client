@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "3206ec8a-1938-420c-9ed4-2c9e0982c096",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "HebMJ_HomeView": {
+      "ver": "1.0.3",
+      "uuid": "1c7a35f8-c718-4ecb-9767-125a64a0560f",
+      "rawTextureUuid": "3206ec8a-1938-420c-9ed4-2c9e0982c096",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 120.5,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 1019,
+      "height": 779,
+      "rawWidth": 1024,
+      "rawHeight": 1024,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

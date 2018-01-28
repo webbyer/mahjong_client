@@ -36,7 +36,12 @@ cc.Class({
             default: null,
             type: cc.Node,
             tooltip: "包时卡用户不消耗房卡",
-        }
+        },
+        ReopenAllowedToggle: {
+            default: null,
+            type: cc.Toggle,
+            tooltip: "结束后自动重开房间",
+        },
     },
 
     // use this for initialization
@@ -44,9 +49,9 @@ cc.Class({
         this.JuShu = 8;
         this.FanShu = 1;
         this.WanFa = [1];
-        if (cc.dd.user.getUserInfo().isagent == 1) {
-            this.DelegateRoomRecord.active = true;
-        }
+        // if (cc.dd.user.getUserInfo().isagent == 1) {
+        //     this.DelegateRoomRecord.active = true;
+        // }
         this.BaoshikaTip.active = cc.dd.user.getCardState().unlimited;
 
     },

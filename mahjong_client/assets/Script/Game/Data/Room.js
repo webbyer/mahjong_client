@@ -7,7 +7,12 @@ const RoomEvName = {
     ROOM_GAME_DATA: "room_game_data", // 房间数据
     MSG_NOTIFY: "msg_notify",
 };
+const RoomDeskType = { // 麻将桌类型
+    Desk_2D: "2D", // 平面视图
+    Desk_3D: "3D", // 立体视图
+};
 cc.dd.roomEvName = RoomEvName;
+cc.dd.roomDeskType = RoomDeskType;
 const RoomEvent = cc.Class({
     extends: EventManager,
 });

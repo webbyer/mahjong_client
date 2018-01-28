@@ -6,6 +6,8 @@ const SceneID = {
     LOGIN_SCENE: 1,
     HALL_SCENE: 2,
     GAME_SCENE: 3,
+    CHAGUAN_SENCE: 4,
+    CHAGUAN_INNDER_SENCE: 5,
 };
 const SceneManager = cc.Class({
     statics: {
@@ -51,6 +53,14 @@ const SceneManager = cc.Class({
             }
             case SceneID.GAME_SCENE: {
                 this._loadScene("Mahjong_GmaeScene.fire", sceneId, data, callback);
+                break;
+            }
+            case SceneID.CHAGUAN_SENCE: {
+                this._loadScene("Chaguan_Sence.fire", sceneId, data, callback);
+                break;
+            }
+            case SceneID.CHAGUAN_INNDER_SENCE: {
+                this._loadScene("ChaGuan_inner_Sence.fire", sceneId, data, callback);
                 break;
             }
             default: {

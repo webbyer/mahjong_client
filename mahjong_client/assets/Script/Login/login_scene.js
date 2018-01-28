@@ -24,6 +24,12 @@ cc.Class({
         cc.dd.userEvent.addObserver(this);
         cc.dd.net.addObserver(this);
         this.setBtnLoginState(false);
+        // 关闭2d
+        if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) != cc.dd.roomDeskType.Desk_3D){
+            cc.sys.localStorage.setItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE,cc.dd.roomDeskType.Desk_2D);
+        }
+        // 默认3d视图
+        // cc.sys.localStorage.setItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE,cc.dd.roomDeskType.Desk_3D);
         cc.dd.tipMgr.show("正在连接网络，请稍后...");
         cc.dd.net.connectNet(cc.dd.pubConst.HOST_STR, () => {
             cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REP);

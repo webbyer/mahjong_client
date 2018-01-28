@@ -10,6 +10,10 @@ const UserEventName = {
     USER_INFO_KEY: "userInfoKey",  // 本地化读写 _userinfo 的key
     USER_CARD_INFO_KEY: "userCardInfoKey",  // 本地化读写用户用卡状态
     USER_ANGENT_INFO: "userAgentInfoKey",  // 本地化读写用户卡库存 的key
+    USER_YUYIN_OFF: "useryuyinoff", // 语音打开
+    USER_YUYIN_ON: "useryuyinon",  // 语音关闭
+    USER_YUYIN_SWTICH_STATE_CHANGE: "useryuyinswtichstatechange", // 用户语音聊天的开关状态变化，事件
+    USER_DESK_TYPE_CHANGE: "userdesktypechange", // 用户选择不同的麻将桌面视图
 };
 cc.dd.userEvName = UserEventName;
 const UserEvent = cc.Class({
@@ -33,6 +37,9 @@ const User = cc.Class({
         _countNum: null, // 给解散房间的同意进度条倒数
         _creatRoomDelegate: null, // 是否是代理人新建代理房间
         _did: null,
+        _noticeboard: null,
+        _chaGuan: null,  // 茶馆信息
+        _userCurrentApplystatus: null,
     },
     // 设置用户信息
     setUserInfo(user) {
@@ -114,6 +121,14 @@ const User = cc.Class({
     // 得到did
     getUserDid() {
         return this._did;
+    },
+    // 设置茶馆信息
+    setChaGuan(chaguan) {
+        this._chaGuan = chaguan;
+    },
+    // 得到茶馆信息
+    getChaGuan() {
+        return this._chaGuan;
     },
 });
 cc.dd.user = User.getInstance();

@@ -126,7 +126,7 @@ cc.dd.invokeWXFriendShareCustumLink = () => {
                 "正宗朝阳北票建平凌源手机麻将",
                 "好友随时约局，手机实时对战。搂宝带会儿、点炮赔三家。");
         }else {
-            jsb.reflection.callStaticMethod("WXShareTool", "jsInitiateWXFriendsShare");
+            jsb.reflection.callStaticMethod("WXShareTool", "jsInitiateWXFriendsShareDownload:",cc.dd.pubConst.IOS_DOWNLOAD_LINK);
         }
     }
 };
@@ -139,7 +139,7 @@ cc.dd.invokeWXMomentShareCustumLink = () => {
                 "正宗朝阳北票建平凌源手机麻将",
                 "好友随时约局，手机实时对战。搂宝带会儿、点炮赔三家。");
         }else {
-            jsb.reflection.callStaticMethod("WXShareTool", "jsInitiateWXMomentssShare");
+            jsb.reflection.callStaticMethod("WXShareTool", "jsInitiateWXMomentssShareDownload:",cc.dd.pubConst.IOS_DOWNLOAD_LINK);
         }
     }
 };
@@ -163,7 +163,7 @@ cc.dd.getCurrentBatteryStatus = () => {
         if(cc.sys.os == cc.sys.OS_ANDROID) {
             return 1;
         }else {
-            var result = jsb.reflection.callStaticMethod("RootViewController","getBatteryLevel");
+            var result = jsb.reflection.callStaticMethod("BatteryTool","getBatteryLevel");
             cc.log("返回的电池电量"+result.toPrecision(2));
             return result.toPrecision(2);
         }
@@ -176,7 +176,7 @@ cc.dd.getCurrentBatteryChargingStatus = () => {
         if(cc.sys.os == cc.sys.OS_ANDROID) {
             return false;
         }else {
-            var stateResult = jsb.reflection.callStaticMethod("RootViewController","getBatteryState");
+            var stateResult = jsb.reflection.callStaticMethod("BatteryTool","getBatteryState");
             cc.log("返回的充电状态"+ stateResult);
             if(stateResult == "Charging") {
                 return true;
@@ -188,21 +188,19 @@ cc.dd.getCurrentBatteryChargingStatus = () => {
         return true; // 网页调试
     }
 };
-// 被原生回调的更新电池电量的方法
-// cc.dd.updateCurrentBatteryLevel = (level) => {
-//     cc.log("oc观察者观察电量发生改变回调"+level);
-//     // cc.dd.gameCfg.BATTERTY.BATTERTY_LEVEL_UPDATE
-// };
-// 被原生回调的更新电池是否在充电状态的方法
-// cc.dd.updateCurrentBatteryStatus = (sta) => {
-//     cc.log("oc");
-//     // cc.log("oc观察者观察电量发生改变回调"+sta);
-//     // if(sta == "Charging"){
-//     //     cc.dd.notifyEvent(cc.dd.gameCfg.BATTERTY.BATTERTY_CHARGING,true);
-//     // }else {
-//     //     cc.dd.notifyEvent(cc.dd.gameCfg.BATTERTY.BATTERTY_CHARGING,false);
-//     // }
-// };
+/**
+ *  销毁电池监听对象
+ * @param
+ */
+cc.dd.foriOSDestoryBatteryMonitor= () =>{
+    if(cc.sys.isMobile) {
+        if(cc.sys.os == cc.sys.OS_ANDROID) {
+
+        }else {
+            jsb.reflection.callStaticMethod("BatteryTool","destoryAllBatteryMonitorNotification");
+        }
+    }
+};
 // 把房间id复制到手机剪贴板
 cc.dd.accessPatseBoard = (str) => {
     if(cc.sys.isMobile) {
@@ -300,6 +298,21 @@ cc.dd.shareZongZhanJiToWXMoment = () => {
                 "(Ljava/lang/String;Ljava/lang/String;)V",cc.dd.user.zongzjpath,"WECHAT_SHARE_TYPE_FRENDS");
         }else {
             jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsSharePicWithImagePath:whitsence:",cc.dd.user.zongzjpath,"1");
+        }
+    }
+};
+
+// 分享茶馆口令到朋友
+cc.dd.shareChaguanNumToWXFriends = (str) => {
+    if (cc.sys.isMobile) {
+        cc.log("分享茶馆口令到朋友");
+        if (cc.sys.os == cc.sys.OS_ANDROID) {
+            jsb.reflection.callStaticMethod("org/cocos2dx/javascript/AppActivity" ,"SendWXAppContent", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+                str ,
+                cc.dd.pubConst.ANDROID_DOWNLOAD_LINK,
+                str);
+        }else {
+            jsb.reflection.callStaticMethod("WXShareTool","jsInitiateWXFriendsShare:",str);
         }
     }
 };

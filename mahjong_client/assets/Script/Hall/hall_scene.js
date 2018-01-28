@@ -34,7 +34,6 @@ cc.Class({
             default:null,
             type: cc.Node,
         },
-        toUpdateCardum: null,
     },
 
     // use this for initialization
@@ -57,12 +56,10 @@ cc.Class({
         cc.log(cc.dd.user.getUserInfo());
         this.setUserId(cc.dd.user.getUserInfo().UID);
         this.setUserNickName(cc.dd.user.getUserInfo().nickname);
-        if(!cc.dd.user.getUserInfo().roomcardnum || cc.dd.user.getUserInfo().wereInGameSence) {
-            cc.log("");
-            this.toUpdateCardum = true; // 准备可以弃用了
+        if(!cc.dd.user.getUserInfo().roomcardnum || cc.dd.user.getUserInfo().wereInGameSence) {// 游戏场景回到大厅场景
             cc.dd.user.getUserInfo().wereInGameSence = false;
-            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_ENTER_CARDCHANGE_REP,cc.dd.user.getUserInfo().UID);
-        }else {
+            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHECK_LOGIN_REP,cc.dd.user.getUserInfo().UID);
+        }else { // 登录后进入
             this.setFangKaNum(cc.dd.user.getUserInfo().roomcardnum);
         }
         this.setAvatarSpriteFrame(cc.dd.user.getUserInfo().wx_portrait);
@@ -114,18 +111,42 @@ cc.Class({
                 });
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_GAME_STATE: {
-                cc.dd.Reload.loadDir("DirRes", () => {
-                    cc.dd.sceneMgr.runScene(cc.dd.sceneID.GAME_SCENE);
+            case cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP: {  // 新建房间失败的返回，1003
+                if(cc.dd.user._matching) {
+                    cc.dd.user._matching = false;
+                    this.node.getChildByName("Tip").getChildByName("NoteBk").getChildByName("contentTitle").getComponent(cc.Label).string = data.errmsg;
+                    this.node.getChildByName("Tip").getChildByName("NoteBk").getChildByName("aniNode").active = false;
+                    this.scheduleOnce(() => {
+                        this.node.getChildByName("Tip").destroy();
+                },2);
+                }else {
+                    cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
+                        const roomNotExitMes = cc.instantiate(prefab);
+                    roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
+                    this.node.addChild(roomNotExitMes);
                 });
+                }
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CARDCHANGE_REQ: { //5007
-                if(this.toUpdateCardum) {
-                    this.toUpdateCardum = false;
-                    cc.dd.user.getUserInfo().roomcardnum = data.mycards;
-                    this.setFangKaNum(cc.dd.user.getUserInfo().roomcardnum);
+            case cc.dd.gameCfg.EVENT.EVENT_GAME_STATE: {
+                if (cc.dd.user._matching){
+                    cc.dd.user._matching = false;
+                    this.scheduleOnce(() => {
+                        // this.node.getChildByName("Tip").destroy();
+                        cc.dd.Reload.loadDir("DirRes", () => {
+                        cc.dd.sceneMgr.runScene(cc.dd.sceneID.GAME_SCENE);
+                });
+                },3);
+                    // this.node.getChildByName("Tip").destroy();
+                }else {
+                    cc.dd.Reload.loadDir("DirRes", () => {
+                        cc.dd.sceneMgr.runScene(cc.dd.sceneID.GAME_SCENE);
+                });
                 }
+                break;
+            }
+            case cc.dd.userEvName.USER_LOGIN_SCU: { // 1001的返回，游戏或茶馆返回大厅后调用的返回
+                this.setFangKaNum(cc.dd.user.getUserInfo().roomcardnum);
                 break;
             }
             case cc.dd.gameCfg.EVENT.EVENT_ENTER_CARDCHANGE_REP: {  // 查询房卡失败返回，1007
@@ -158,15 +179,15 @@ cc.Class({
                 });
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_DELEGATE_ROOM_REOCRD_REQ: { // 5015
-                cc.log("成功返回房间代理记录或是成功创建代理房间");
-                cc.dd.Reload.loadPrefab("Hall/Prefab/RoomDelegateRecord", (prefab) => {
-                    const delegateRecord = cc.instantiate(prefab);
-                    delegateRecord.getComponent("RoomDelegRecord").initInfo(data.rooms);
-                    cc.find("UI_ROOT").addChild(delegateRecord);
-                });
-                break;
-            }
+            // case cc.dd.gameCfg.EVENT.EVENT_DELEGATE_ROOM_REOCRD_REQ: { // 5015
+            //     cc.log("成功返回房间代理记录或是成功创建代理房间");
+            //     cc.dd.Reload.loadPrefab("Hall/Prefab/RoomDelegateRecord", (prefab) => {
+            //         const delegateRecord = cc.instantiate(prefab);
+            //         delegateRecord.getComponent("RoomDelegRecord").initInfo(data.rooms);
+            //         cc.find("UI_ROOT").addChild(delegateRecord);
+            //     });
+            //     break;
+            // }
             case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_ZONGZHANJI_REQ: { // 4023,查询总战绩的返回
                 cc.log("展示总战绩");
                 cc.dd.Reload.loadPrefab("Game/Prefab/ZongZhanJi", (prefab) => {
@@ -174,6 +195,22 @@ cc.Class({
                     zzj.getComponent("ZongZhanJi").initContentPic(data.totalscoreurl,cc.dd.user.roomserialnumber);
                     this.node.addChild(zzj);
                 });
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REP: { // 1015,进入茶馆错误处理
+                cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
+                    const UIDNotExitMes = cc.instantiate(prefab);
+                UIDNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
+                this.node.addChild(UIDNotExitMes);
+            });
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REQ: { // 5015
+                if (cc.dd.user.getChaGuan()) {
+                    cc.dd.Reload.loadDir("DirRes", () => {
+                        cc.dd.sceneMgr.runScene(cc.dd.sceneID.CHAGUAN_INNDER_SENCE);
+                });
+                }
                 break;
             }
             default: {

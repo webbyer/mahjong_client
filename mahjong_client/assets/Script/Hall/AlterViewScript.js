@@ -8,6 +8,7 @@ cc.Class({
             tooltip: "显示输入的节点",
         },
         DismissRoomSuc: null,
+        netWorkData: null,
     },
     onLoad: function () {
     },
@@ -20,6 +21,8 @@ cc.Class({
             this.exchangeFKSuc = true;
         }else if(data.indexOf("转让失败") != -1) {
             this.exchangeFKFail = true;
+        }else if(data.indexOf("更换茶馆口令") != -1){
+            this.changeCGNum = true;
         }
     },
     // 确认按钮
@@ -40,5 +43,18 @@ cc.Class({
             this.node.destroy();
         }
     },
+    // 成对，确认取消按钮，确认
+    onPairBtnComfrimClick() {
+        if (this.changeCGNum) {
+            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_CHANGE_NUM_REP);
+        }else {
+            cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_DELETE_DESK_REP,this.netWorkData);
+        }
+        this.node.destroy();
+    },
 
+    // 成对，确认取消按钮，取消
+    onPairBtnCancleClick() {
+        this.node.destroy();
+    },
 });

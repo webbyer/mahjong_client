@@ -62,4 +62,27 @@ cc.Class({
         cc.log(`战绩`);
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_QUERY_GAMERECORD_REP);
     },
+    // 自由桌
+    onMatchingRoomClick() {
+        cc.log(`匹配房间`);
+        cc.dd.user._matching = true;
+        cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP,-1);
+        cc.dd.Reload.loadPrefab("Hall/Prefab/Tip", (prefab) => {
+            const Tip = cc.instantiate(prefab);
+        this.node.addChild(Tip);
+    });
+    },
+    // 茶馆
+    onChaGuanClick() {
+        if (cc.dd.user.getUserInfo().isagent === 1) {
+            cc.dd.Reload.loadDir("DirRes", () => {
+                cc.dd.sceneMgr.runScene(cc.dd.sceneID.CHAGUAN_SENCE);
+        });
+        }else {
+            cc.dd.Reload.loadPrefab("ChaGuan/Prefab/EnterChaguan", (prefab) => {
+                const EnterChaguan = cc.instantiate(prefab);
+            this.node.addChild(EnterChaguan);
+        });
+        }
+    },
 });

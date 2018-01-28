@@ -35,7 +35,7 @@ const MJEventManager = cc.Class({
                 body.did = deviceid;
             }
         }else{
-            body.did = "60eb20b0-8fd2-4b5c-805f-fecb298662db";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
+            body.did = "1b34c7a3-b9cf-45b8-878e-83c52dc652e7";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
         }//26ee669399b2ee1b //
 
         switch (event) {
@@ -129,10 +129,6 @@ const MJEventManager = cc.Class({
                 this.sendMessage(body);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_DELEGATE_ROOM_REOCRD_REP: { // 查询代开房间的记录,1015
-                this.sendMessage(body);
-                break;
-            }
             case cc.dd.gameCfg.EVENT.EVENT_JIESUAN_START_NEXTROUND: { //  结算界面点击开始下一局按钮，1014，不需要监听返回
                 this.sendMessage(body);
                 break;
@@ -153,6 +149,45 @@ const MJEventManager = cc.Class({
                 this.sendMessage(body);
                 break;
             }
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REP: { // 1015，用户进入茶馆,茶馆相关信息
+                body.clubtoken = data;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_DELETE_DESK_REP: { // 1016，删除茶馆内牌桌
+                body.roomid = data;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_CHANGE_NUM_REP: { //  更换自己茶馆的口令号
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_VIEW_PERSONAL_REP: { // 1019，查看成员
+                body.status = data;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_CONTROL_PERSONAL_REP: { // 1020，处理成员
+                body.uid = data.uid;
+                body.operation = data.operation;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_VIEW_BILL_REP: { // 1017，查看账单
+                body.clubtoken = data;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_APPALY_REP: { // 1021，申请加入茶馆会员
+                body.clubtoken = data;
+                this.sendMessage(body);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_LEAVE_MAJIONG_DESK_REP: { // 1022,牌桌离开到茶馆
+                this.sendMessage(body);
+                break;
+            }
             default: {
                 cc.log(`unkown event: ${event}`);
             }
@@ -169,6 +204,9 @@ const MJEventManager = cc.Class({
         cc.log(msgData);
         switch (msgId) {
             case cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REQ: {  // 检测最新版本的返回，5000
+                if (msgData.noticeboard) {
+                    cc.dd.user._noticeboard = msgData.noticeboard;
+                }
                 cc.dd.checkForNewVersion(msgData.iosversion,msgData.androidversion,msgData);
                 break;
             }
@@ -290,10 +328,6 @@ const MJEventManager = cc.Class({
                 this.notifyEvent(msgId, msgData);
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_DELEGATE_ROOM_REOCRD_REQ: { // 查询代开房间记录的返回，5015
-                this.notifyEvent(msgId, msgData);
-                break;
-            }
             case cc.dd.gameCfg.EVENT.EVENT_YUYIN_COMING: { // 4019,收到玩家发语音的广播
                 cc.dd.room.saveMsg(msgId,msgData);
                 break;
@@ -314,8 +348,33 @@ const MJEventManager = cc.Class({
                 }
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REQ: { // 用户重新上线
+            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REQ: { // 收到用户发送的表情包广播
                 cc.dd.room.saveMsg(msgId,msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_VIEW_PERSONAL_REQ: { // 收到权限管理的用户列表
+                this.notifyEvent(msgId, msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_VIEW_BILL_REQ: { // 5017,查看账单
+                this.notifyEvent(msgId, msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REP: { // 1015,进入茶馆错误处理
+                this.notifyEvent(msgId, msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REQ: { // 查询茶馆信息的返回，5015
+                cc.dd.user.setChaGuan(msgData);
+                this.notifyEvent(msgId, msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_LEAVE_MAJIONG_DESK_REQ: { // 5022,牌桌离开到茶馆
+                if (msgData.rtncode && msgData.rtncode == -1){
+                    // cc.log("不能离开牌桌");
+                }else {
+                    this.startEvent(cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REP,msgData.clubtoken);
+                }
                 break;
             }
             default: {

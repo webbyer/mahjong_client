@@ -62,10 +62,20 @@ cc.Class({
             type: cc.Node,
             tooltip: "玩家的根节点",
         },
-        TimerNode: {
+        TimerNode: { // 准备弃用
             default: null,
             type: cc.Node,
             tooltip: "转盘",
+        },
+        TimerFor2DNode: {
+            default: null,
+            type: cc.Node,
+            tooltip: "2d转盘",
+        },
+        TimerFor3DNode: {
+            default: null,
+            type: cc.Node,
+            tooltip: "3d转盘",
         },
         BaoCard: {
             default: null,
@@ -122,6 +132,11 @@ cc.Class({
             type: cc.Node,
             tooltip: "邀请好友",
         },
+        ExitBtn: {
+            default: null,
+            type: cc.Node,
+            tooltip: "返回茶馆按钮",
+        },
         callback: null,
     },
 
@@ -133,9 +148,34 @@ cc.Class({
         cc.dd.soundMgr.playMusic("resources/Game/Sound/common/bg.mp3", true);
 
         this.initPlayerArr();
+        let arrtemp =["Right","Left"];
         // 测试手牌
        // this.PlayerNode.getChildByName("Bottom").getComponent("PlayerSelf").createHandCard(cardArr);
-
+        if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) == cc.dd.roomDeskType.Desk_3D){
+            // 换桌面背景图为3d,默认是2d桌面
+            const background2d = cc.url.raw("resources/Game/Textures/table.png");
+            const texturebg2d = new cc.SpriteFrame(background2d);
+            this.node.getChildByName("Table").getComponent(cc.Sprite).spriteFrame = texturebg2d;
+            this.TimerFor2DNode.active = false;
+            this.TimerFor3DNode.active = true;
+            // this.JushuLabel.node.y = 60;
+            arrtemp.forEach((item) => {
+                this.PlayerNode.getChildByName(item).getChildByName("ParentContainer").active = true;
+            this.PlayerNode.getChildByName(item).getChildByName("ParentContainer2D").active = false;
+            this.PlayerNode.getChildByName(item).getChildByName("OutCardLayer").active = true;
+            this.PlayerNode.getChildByName(item).getChildByName("OutCardLayer2D").active = false;
+        });
+        }else {
+            this.TimerFor2DNode.active = true;
+            this.TimerFor3DNode.active = false;
+            // this.JushuLabel.node.y = 20;
+            arrtemp.forEach((item) => {
+                this.PlayerNode.getChildByName(item).getChildByName("ParentContainer").active = false;
+            this.PlayerNode.getChildByName(item).getChildByName("ParentContainer2D").active = true;
+            this.PlayerNode.getChildByName(item).getChildByName("OutCardLayer").active = false;
+            this.PlayerNode.getChildByName(item).getChildByName("OutCardLayer2D").active = true;
+        });
+        }
         cc.dd.roomEvent.notifyMsg();
         cc.dd.net.setCallBack(this);
     },
@@ -189,7 +229,7 @@ cc.Class({
         if(userList.length > 1){
             let count = 0;
             let newarr = [];
-            for (let i = 0; i < userList.length-1; i++) { //
+            for (let i = 0; i < userList.length-1; i++) {
                 if (userList[i].ipaddress != userList[i + 1].ipaddress) {
                     newarr.push(userList.slice(count, i + 1));
                     count = i + 1;
@@ -200,20 +240,24 @@ cc.Class({
                 userList.forEach((item, index) => {
                     if(item == newarr[0][0]){
                     item.needHideIp = true;
+                }
+                if(newarr.length == 2) {
+                    if(item == newarr[0][1]){
+                        item.needHideIp = true;
                     }
-                    if(newarr.length == 2) {
-                        if(item == newarr[0][1]){
-                            item.needHideIp = true;
-                        }
-                    }
-                });
+                }
+                if (userList[index].ipaddress =="127.0.0.1") {
+                    item.needHideIp = true;
+                }
+            });
             }
         }else {
             userList[0].needHideIp = true;
         }
 
-
-
+        this.playerArr.forEach((item) => {
+            item.active = false;
+        });
         userList.forEach((item, index) => {
             this.playerArr[index].active = true;
             let player_class = null;
@@ -373,6 +417,11 @@ cc.Class({
             this.roomPassword = data.room.roomid;
         }
         if (this.JushuLabel) {
+            // if(data.room.nowround == -1) {
+            //     this.JushuLabel.string = "第0局 / 共" + data.room.rounds + "圈";
+            // }else{
+            //     this.JushuLabel.string = "第" + data.room.nowround + "局 / 共" + data.room.rounds + "圈";
+            // }
             if(data.room.nowround == -1) {
                 this.JushuLabel.string = "0/" + data.room.rounds + " 局";
             }else{
@@ -402,6 +451,15 @@ cc.Class({
             this.setBaoCard(true, data.baocard)
         } else {
             this.setBaoCard(false);
+        }
+        if (data.room.createtype == "agent") {
+            if (data.userlist.length != 4) {
+                this.setBaoCard(false);
+                this.ExitBtn.active = true;
+            }else {
+                this.setBaoCard(true, data.baocard);
+                this.ExitBtn.active = false;
+            }
         }
     },
     // 初始化墙头牌
@@ -821,7 +879,11 @@ cc.Class({
             }
         }
         if (localSeat) {
-            this.TimerNode.getComponent("TimerControl").ratateTimer(localSeat);
+            if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) == cc.dd.roomDeskType.Desk_3D){
+                this.TimerFor3DNode.getComponent("TimerControl").ratateTimer(localSeat);
+            }else {
+                this.TimerFor2DNode.getComponent("TimerControl").ratateTimer(localSeat);
+            }
         } else {
             cc.log(`未知的本地座位号: ${userid}`);
         }
@@ -895,10 +957,33 @@ cc.Class({
      */
     cleanDesk() {
         this.playerArr.forEach((item,index) => {//ParentContainer
-            const handNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
-            const outNode = item.getChildByName("OutCardLayer");
-            const moNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
-            const pengGangNode = item.getChildByName("ParentContainer").getChildByName("PengGangLayer");
+            // const handNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
+            // const outNode = item.getChildByName("OutCardLayer");
+            // const moNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            // const pengGangNode = item.getChildByName("ParentContainer").getChildByName("PengGangLayer");
+            let handNode = null;
+            let outNode = null;
+            let moNode = null;
+            let pengGangNode = null;
+        if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) == cc.dd.roomDeskType.Desk_2D){
+            if ((index === 1) || (index === 3)){
+                handNode = item.getChildByName("ParentContainer2D").getChildByName("HandCardLayer").getChildByName("HandCardLay");
+                outNode= item.getChildByName("OutCardLayer2D");
+                moNode= item.getChildByName("ParentContainer2D").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+                pengGangNode = item.getChildByName("ParentContainer2D").getChildByName("PengGangLayer");
+                pengGangNode.height = 0;
+            }else {
+                handNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
+                outNode= item.getChildByName("OutCardLayer");
+                moNode= item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+                pengGangNode = item.getChildByName("ParentContainer").getChildByName("PengGangLayer");
+            }
+        }else {
+            handNode = item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("HandCardLay");
+            outNode= item.getChildByName("OutCardLayer");
+            moNode= item.getChildByName("ParentContainer").getChildByName("HandCardLayer").getChildByName("MoCardLayer");
+            pengGangNode = item.getChildByName("ParentContainer").getChildByName("PengGangLayer");
+        }
             handNode.removeAllChildren(true);
             moNode.removeAllChildren(true);
             pengGangNode.removeAllChildren(true);

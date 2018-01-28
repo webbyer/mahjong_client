@@ -23,5 +23,14 @@ module.exports = {
         BAOSHIKA_WEEK: "小王卡",
         BAOSHIKA_MOUTH: "大王卡",
     },
+    ACCESS_TYPE: {
+        APPALYING: "appalying",
+        AGREED: "agreed",
+    },
+    APPLY_STATUS: {
+        NOT_A_MEMBER: -1,
+        WAITING_INLINE: 0,
+        ALREADY_A_MENBER: 1,
+    },
 };
 cc.dd.hall_config = module.exports;

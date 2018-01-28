@@ -84,10 +84,6 @@ module.exports = {
         EVENT_PLAYER_TING_CARD: 4022, // 玩家听牌
         EVENT_BAO_CARD_CHANGE: 4021,  // 宝牌更换
         EVENT_HAI_DI_LAO: 4020, // 海底捞
-
-        // 消息枚举，你在下面添加，我在上面添加
-        EVENT_DELEGATE_ROOM_REOCRD_REP: 1015, // 代理用户查询自己代开房间的记录
-        EVENT_DELEGATE_ROOM_REOCRD_REQ: 5015, // 代理用户查询自己代开房间的记录的返回
         EVENT_JIESUAN_START_NEXTROUND: 1014, // 结算界面点击开始下一局按钮需要发请求到1014，不需要监听返回
         EVENT_JIESUAN_ZONGZHANJI_REP: 1023, // 结算界面请求总战绩
         EVENT_JIESUAN_ZONGZHANJI_REQ: 4023, // 结算界面请求总战绩的返回
@@ -97,6 +93,19 @@ module.exports = {
         EVENT_USER_BACKONLINE: 4006,  // 广播断线用户上线了
         EVENT_USER_SENT_EMOJI_REP: 2016, // 用户发送短语或表情请求
         EVENT_USER_SENT_EMOJI_REQ: 5016, // 用户发送短语或表情广播
+        // 茶馆
+        EVENT_ENTER_CHAGUAN_REP: 1015, // 用户进入茶馆
+        EVENT_ENTER_CHAGUAN_REQ: 5015, // 茶馆信息
+        EVENT_CHAGUAN_DELETE_DESK_REP: 1016, // 删除茶馆内牌桌。返回5015
+        EVENT_CHAGUAN_VIEW_BILL_REP: 1017, // 查看茶馆账单
+        EVENT_CHAGUAN_VIEW_BILL_REQ: 5017, // 查看茶馆账单。返回5017
+        EVENT_CHAGUAN_CHANGE_NUM_REP: 1018,// 更换茶馆口令。返回5015
+        EVENT_CHAGUAN_VIEW_PERSONAL_REP: 1019, // 馆主查看会员列表
+        EVENT_CHAGUAN_VIEW_PERSONAL_REQ: 5019, // 馆主查看会员列表。返回5019
+        EVENT_CHAGUAN_CONTROL_PERSONAL_REP: 1020, // 馆主管理茶馆会员 同意/拒绝加入与请出茶馆。返回5015
+        EVENT_CHAGUAN_APPALY_REP: 1021, // 申请茶馆会员。返回5015
+        EVENT_CHAGUAN_LEAVE_MAJIONG_DESK_REP: 1022, // 离开牌桌回到茶馆
+        EVENT_CHAGUAN_LEAVE_MAJIONG_DESK_REQ: 5022, // 离开牌桌回到茶馆成功的返回
     },
     // 电池电量状态
     BATTERTY: {
