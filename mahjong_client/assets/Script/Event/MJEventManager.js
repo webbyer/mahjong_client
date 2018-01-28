@@ -35,8 +35,8 @@ const MJEventManager = cc.Class({
                 body.did = deviceid;
             }
         }else{
-            body.did = "1b34c7a3-b9cf-45b8-878e-83c52dc652e7";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
-        }//26ee669399b2ee1b //
+            body.did = "0e6b168c-d397-4add-969f-60f66b039de0";// 网页 47194279-dfb8-4e35-9ba2-d13dd70028dc
+        }//1b34c7a3-b9cf-45b8-878e-83c52dc652e7 //0e6b168c-d397-4add-969f-60f66b039de0 //
 
         switch (event) {
             case cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REP: {   // 检测最新版本，1000

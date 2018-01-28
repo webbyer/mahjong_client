@@ -456,9 +456,11 @@ cc.Class({
             if (data.userlist.length != 4) {
                 this.setBaoCard(false);
                 this.ExitBtn.active = true;
+                this.QiangTouCard.active = false;
             }else {
                 this.setBaoCard(true, data.baocard);
                 this.ExitBtn.active = false;
+                this.QiangTouCard.active = true;
             }
         }
     },

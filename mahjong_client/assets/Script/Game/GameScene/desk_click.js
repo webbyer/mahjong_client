@@ -340,4 +340,8 @@ cc.Class({
         }
 
     },
+    // 茶馆进入牌桌的情况下，人数未满可以返回茶馆
+    onClickExitToChaguan() {
+        cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_LEAVE_MAJIONG_DESK_REP);
+    },
 });

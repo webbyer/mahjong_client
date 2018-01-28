@@ -188,6 +188,14 @@ cc.Class({
                 this.node.getComponent("mj_gameScene").showUserEmojiOrPhrase(data);
                 break;
             }
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REQ: {
+                if (cc.dd.user.getChaGuan()) {
+                    cc.dd.Reload.loadDir("DirRes", () => {
+                        cc.dd.sceneMgr.runScene(cc.dd.sceneID.CHAGUAN_INNDER_SENCE);
+                });
+                }
+                break;
+            }
             default: {//showUserEmojiOrPhrase
                 cc.log(`unkown event: ${event}`);
             }
