@@ -322,7 +322,7 @@ cc.Class({
             });
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP: {
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP: { // 不存在房间 1004
                 cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
                     const roomNotExitMes = cc.instantiate(prefab);
                 roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);

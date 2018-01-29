@@ -124,6 +124,7 @@ cc.Class({
         roomConfig.playrule = this.WanFa;
         roomConfig.createtype = "selfuse";// agent  selfuse
         roomConfig.roomtype = "cymj";
+        roomConfig.autocreate = 0;
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP,roomConfig);
     },
     // 代理人代开房间给其他用户玩的功能
@@ -134,6 +135,11 @@ cc.Class({
         roomConfig.playrule = this.WanFa;
         roomConfig.createtype = "agent";// agent  selfuse
         roomConfig.roomtype = "cymj";
+        if (this.ReopenAllowedToggle.isChecked) {
+            roomConfig.autocreate = 1;
+        }else {
+            roomConfig.autocreate = 0;
+        }
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP,roomConfig);
         this.node.destroy();
     },

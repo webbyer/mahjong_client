@@ -67,10 +67,6 @@ cc.Class({
         cc.log(`匹配房间`);
         cc.dd.user._matching = true;
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP,-1);
-        cc.dd.Reload.loadPrefab("Hall/Prefab/Tip", (prefab) => {
-            const Tip = cc.instantiate(prefab);
-        this.node.addChild(Tip);
-    });
     },
     // 茶馆
     onChaGuanClick() {

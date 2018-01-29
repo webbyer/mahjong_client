@@ -103,11 +103,11 @@ cc.Class({
     },
     onMessageEvent(event, data) {
         switch (event) {
-            case cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP: {
-                cc.log("输入的房间不存在");
+            case cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP: { // 不存在房间 1004
                 cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
                     const roomNotExitMes = cc.instantiate(prefab);
-                this.node.addChild(roomNotExitMes);
+                    roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
+                    this.node.addChild(roomNotExitMes);
                 });
                 break;
             }
@@ -131,12 +131,15 @@ cc.Class({
             case cc.dd.gameCfg.EVENT.EVENT_GAME_STATE: {
                 if (cc.dd.user._matching){
                     cc.dd.user._matching = false;
+                    cc.dd.Reload.loadPrefab("Hall/Prefab/Tip", (prefab) => {
+                        const Tip = cc.instantiate(prefab);
+                        this.node.addChild(Tip);
+                    });
                     this.scheduleOnce(() => {
-                        // this.node.getChildByName("Tip").destroy();
                         cc.dd.Reload.loadDir("DirRes", () => {
                         cc.dd.sceneMgr.runScene(cc.dd.sceneID.GAME_SCENE);
-                });
-                },3);
+                        });
+                    },3);
                     // this.node.getChildByName("Tip").destroy();
                 }else {
                     cc.dd.Reload.loadDir("DirRes", () => {
