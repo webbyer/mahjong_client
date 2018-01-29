@@ -104,6 +104,9 @@ cc.Class({
     onMessageEvent(event, data) {
         switch (event) {
             case cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP: { // 不存在房间 1004
+                if(cc.dd.user._matching) {
+                    cc.dd.user._matching = false;
+                }
                 cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
                     const roomNotExitMes = cc.instantiate(prefab);
                     roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
@@ -114,18 +117,12 @@ cc.Class({
             case cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP: {  // 新建房间失败的返回，1003
                 if(cc.dd.user._matching) {
                     cc.dd.user._matching = false;
-                    this.node.getChildByName("Tip").getChildByName("NoteBk").getChildByName("contentTitle").getComponent(cc.Label).string = data.errmsg;
-                    this.node.getChildByName("Tip").getChildByName("NoteBk").getChildByName("aniNode").active = false;
-                    this.scheduleOnce(() => {
-                        this.node.getChildByName("Tip").destroy();
-                },2);
-                }else {
-                    cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
-                        const roomNotExitMes = cc.instantiate(prefab);
+                }
+                cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
+                    const roomNotExitMes = cc.instantiate(prefab);
                     roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
                     this.node.addChild(roomNotExitMes);
                 });
-                }
                 break;
             }
             case cc.dd.gameCfg.EVENT.EVENT_GAME_STATE: {

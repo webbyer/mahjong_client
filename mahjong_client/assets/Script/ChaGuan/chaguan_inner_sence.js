@@ -330,7 +330,7 @@ cc.Class({
             });
                 break;
             }
-            case cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP: {
+            case cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP: { // 1003
                 cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
                     const roomNotExitMes = cc.instantiate(prefab);
                 roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
