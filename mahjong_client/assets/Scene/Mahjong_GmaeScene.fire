@@ -1767,7 +1767,7 @@
     "node": {
       "__id__": 41
     },
-    "_enabled": true,
+    "_enabled": false,
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 65,
@@ -3002,7 +3002,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -4
+      "y": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -3042,7 +3042,7 @@
     "node": {
       "__id__": 77
     },
-    "_enabled": true,
+    "_enabled": false,
     "_layoutSize": {
       "__type__": "cc.Size",
       "width": 65,

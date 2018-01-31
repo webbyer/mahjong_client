@@ -207,18 +207,20 @@ cc.Class({
         if (this.CardZheZhao) {
             this.CardZheZhao.active = true;
         }
+        const readyCard = cc.dd.cardMgr.getReadyOutCard();
+        if(readyCard && readyCard != this.node) {
+            readyCard.getComponent("Card").cancelSelect();
+            cc.dd.cardMgr.setReadyOutCard(this.node);
+        }
         // cc.log(`触摸${event.getDeltaY()}`);
         // cc.log(`触摸${event.getLocationY()}`);
-        // this.moving = true;
         // let a = event.getDeltaX();
         let b = event.getDeltaY();
         this.node.y += b;
         if(this.node.y > 19) {
-            cc.dd.cardMgr.setReadyOutCard(this.node);
             cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
             this.cardState = CARD_STATE.SELECT;
         }else if(this.node.y < 0){
-            cc.dd.cardMgr.setReadyOutCard(this.node);
             this.cardState = CARD_STATE.MOVE_CANCLE;
         }else {
             this.cardState = CARD_STATE.NORMAL;
