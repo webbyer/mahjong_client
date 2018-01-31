@@ -104,7 +104,7 @@ const EventManager = cc.Class({
      * @param data 数据
      */
     addMsgToCacheList(event, data) {
-        cc.log(`将协议缓存下来`);
+        // cc.log(`将协议缓存下来`);
         let body = {
             event: event,
             data: data,

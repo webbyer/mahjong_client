@@ -460,7 +460,9 @@ cc.Class({
             }else {
                 this.setBaoCard(true, data.baocard);
                 this.ExitBtn.active = false;
-                this.QiangTouCard.active = true;
+                if (data.room.qiangtoucard || data.room.qiangtoucard === 0) {
+                    this.QiangTouCard.active = true;
+                }
             }
         }
     },

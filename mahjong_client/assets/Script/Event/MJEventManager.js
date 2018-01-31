@@ -201,7 +201,7 @@ const MJEventManager = cc.Class({
      */
     onMsg(msgId, msgData) {
         cc.log(`收到的协议id为：${msgId}`);
-        cc.log(msgData);
+        // cc.log(msgData);
         switch (msgId) {
             case cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REQ: {  // 检测最新版本的返回，5000
                 if (msgData.noticeboard) {

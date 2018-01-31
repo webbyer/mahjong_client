@@ -89,9 +89,9 @@ cc.Class({
      */
     _touchEnd() {
         cc.log(`结束触摸`);
-        if(this.moving) {
-            this.moving = false;
-        }
+        // if(this.moving) {
+        //     this.moving = false;
+        // }
         if (this.CardZheZhao) {
             this.CardZheZhao.active = false;
         }
@@ -167,7 +167,6 @@ cc.Class({
             }
             case CARD_STATE.MOVE_CANCLE: {
                 cc.log(`滑动出牌取消`);
-                cc.dd.cardMgr.setIsCanOutCard(true);
                 this.cancelSelect();
                 break;
             }
@@ -178,28 +177,24 @@ cc.Class({
      * @private
      */
     _touchCancel() {
-        cc.log(`触摸取消`);
-        if (this.CardZheZhao) {
-            this.CardZheZhao.active = false;
+        // cc.log(`触摸取消`);
+        // if (this.CardZheZhao) {
+        //     this.CardZheZhao.active = false;
+        // }
+        if(this.node.y > 19) {
+            cc.dd.cardMgr.setReadyOutCard(this.node);
+            cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
+            this.cardState = CARD_STATE.SELECT;
+        }else if(this.node.y < 0){
+            cc.dd.cardMgr.setReadyOutCard(this.node);
+            this.cardState = CARD_STATE.MOVE_CANCLE;
+        }else {
+            this.cardState = CARD_STATE.NORMAL;
         }
-        if(this.moving) {
-            this.moving = false;
+        // if(this.moving) {
+        //     this.moving = false;
             this._touchEnd();
-            // switch (this.cardState) {
-            // case CARD_STATE.NORMAL: {
-            //
-            //     break;
-            // }
-            // case CARD_STATE.SELECT: {
-            //
-            //     break;
-            // }
-            // case CARD_STATE.MOVE_CANCLE: {
-            //
-            //     break;
-            // }
-            // }
-        }
+        // }
     },
     /**
      *  麻将滑动触摸
@@ -214,23 +209,19 @@ cc.Class({
         }
         // cc.log(`触摸${event.getDeltaY()}`);
         // cc.log(`触摸${event.getLocationY()}`);
-        this.moving = true;
-        let a = event.getDeltaX();
+        // this.moving = true;
+        // let a = event.getDeltaX();
         let b = event.getDeltaY();
-        this.node.x += a;
         this.node.y += b;
-        cc.log(this.node.x);
         if(this.node.y > 19) {
             cc.dd.cardMgr.setReadyOutCard(this.node);
             cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
             this.cardState = CARD_STATE.SELECT;
         }else if(this.node.y < 0){
+            cc.dd.cardMgr.setReadyOutCard(this.node);
             this.cardState = CARD_STATE.MOVE_CANCLE;
         }else {
             this.cardState = CARD_STATE.NORMAL;
-        }
-        if(this.node.x < -920) {
-            this.cardState = CARD_STATE.MOVE_CANCLE;
         }
     },
     /**
@@ -240,6 +231,7 @@ cc.Class({
         if (cc.dd.cardMgr.getHuiPai() === this.id) {
             return;
         }
+        cc.log("最终被选中");
         this.node.runAction(cc.moveTo(0.05, cc.p(this._pos_x, this._pos_y + MOVE_Y)));
         this.cardState = CARD_STATE.SELECT;
         cc.dd.cardMgr.singleOutSeletedHandCardSimilarOutCard(this.id);
@@ -248,7 +240,9 @@ cc.Class({
      *  麻将取消选择
      */
     cancelSelect() {
+        cc.log("最终被取消选择");
         this.node.runAction(cc.moveTo(0.05, cc.p(this._pos_x, this._pos_y)));
+        cc.dd.cardMgr.setReadyOutCard(null);
         this.cardState = CARD_STATE.NORMAL;
         cc.dd.cardMgr.cancelSingleOutMask();
     },
