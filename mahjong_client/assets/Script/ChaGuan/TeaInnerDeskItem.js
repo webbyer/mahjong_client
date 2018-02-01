@@ -70,7 +70,7 @@ cc.Class({
         this._userApplystatus = userApplystatus;
         this._itemRoomid = data.roomid;
         this.RoomID.string = "房号：" + data.roomid;
-        this.RoundLabel.string = data.rounds + "圈/" + data.basicraise + "底";
+        this.RoundLabel.string = data.rounds + "把/" + data.basicraise + "底";
         this.setDelegRoomGameRulesString(data.rules);
         this.DeleteBtn.active = isOwner;
         if (data.players){

@@ -201,7 +201,7 @@ const MJEventManager = cc.Class({
      */
     onMsg(msgId, msgData) {
         cc.log(`收到的协议id为：${msgId}`);
-        // cc.log(msgData);
+        cc.log(msgData);
         switch (msgId) {
             case cc.dd.gameCfg.EVENT.EVENT_GET_VERSION_REQ: {  // 检测最新版本的返回，5000
                 if (msgData.noticeboard) {
@@ -231,6 +231,10 @@ const MJEventManager = cc.Class({
             case cc.dd.gameCfg.EVENT.EVENT_CHECK_LOGIN_REP: {  // 没有登录过的设备返回1001
                 cc.log("未登录过的设备");
                 cc.dd.userEvent.notifyEvent(cc.dd.userEvName.USER_LOGIN_FAIL);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_CREATE_ROOM_REP: {  // 新建房间失败的返回，1003
+                this.notifyEvent(msgId, msgData);
                 break;
             }
             case cc.dd.gameCfg.EVENT.EVENT_ENTER_ROOM_REP: {  // 房间状态，不存在房间 1004
