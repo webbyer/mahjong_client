@@ -10120,7 +10120,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -430,
+      "x": -440,
       "y": 305
     },
     "_skewX": 0,
@@ -18906,6 +18906,15 @@
     "_didClickRecordBtn": null,
     "RecordBTN": {
       "__id__": 10
+    },
+    "disableRecordBTN": {
+      "__id__": 14
+    },
+    "DuanyuBTN": {
+      "__id__": 17
+    },
+    "disableDuanyuBTN": {
+      "__id__": 22
     }
   },
   {

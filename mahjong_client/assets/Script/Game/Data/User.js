@@ -10,6 +10,7 @@ const UserEventName = {
     USER_INFO_KEY: "userInfoKey",  // 本地化读写 _userinfo 的key
     USER_CARD_INFO_KEY: "userCardInfoKey",  // 本地化读写用户用卡状态
     USER_ANGENT_INFO: "userAgentInfoKey",  // 本地化读写用户卡库存 的key
+    USER_YUYIN_SWTICH_STATE: "useryuyinswtichstate", // 本地化用户语音聊天的开关状态的key
     USER_YUYIN_OFF: "useryuyinoff", // 语音打开
     USER_YUYIN_ON: "useryuyinon",  // 语音关闭
     USER_YUYIN_SWTICH_STATE_CHANGE: "useryuyinswtichstatechange", // 用户语音聊天的开关状态变化，事件

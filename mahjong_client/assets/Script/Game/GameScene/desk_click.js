@@ -24,13 +24,26 @@ cc.Class({
             type: cc.Node,
             tooltip: "录音按钮",
         },
+        disableRecordBTN: {
+            default: null,
+            type: cc.Node,
+        },
+        DuanyuBTN: {
+            default: null,
+            type: cc.Node,
+            tooltip: "表情短语按钮",
+        },
+        disableDuanyuBTN: {
+            default: null,
+            type: cc.Node,
+        },
     },
 
     // use this for initialization
     onLoad: function () {
         this.RecordBTN.on('touchstart',function (event) {
-            this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
-            this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
+            // this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
+            // this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
             this.count = 0;
             this.callback = function () {
                 if (this.count === 179) {
@@ -54,7 +67,11 @@ cc.Class({
             this.schedule(this.callback, 1);
             cc.dd.Reload.loadPrefab("Game/Prefab/Recording", (prefan) => {
                 const recording = cc.instantiate(prefan);
-                this.node.addChild(recording);
+                if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) == cc.dd.roomDeskType.Desk_3D){
+                    this.node.getComponent("mj_gameScene").TimerFor3DNode.addChild(recording);
+                }else {
+                    this.node.getComponent("mj_gameScene").TimerFor2DNode.addChild(recording);
+                }
             });
             cc.dd.startRecordingWithGvoice();
             cc.dd.soundMgr.pauseAllSounds();
@@ -63,25 +80,20 @@ cc.Class({
             if(this.callback) {
                 this.unschedule(this.callback);
                 this.stopRecordingWithGvoiceSDk();
-                if(this.count <= 1) {
-                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
-                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
-                }else {
-                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = true;
-                    this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = false;
-                }
             }
         },this);
         this.RecordBTN.on('touchcancel',function (event) {
             if(this.callback) {
                 this.unschedule(this.callback);
                 this.stopRecordingWithGvoiceSDk();
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = true;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = false;
             }
         },this);
+        cc.log(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE));
+        if(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) == cc.dd.userEvName.USER_YUYIN_ON) {
+            this.RecordBTN.active = true;
+        }else {
+            this.RecordBTN.active = false;
+        }
     },
     // 返回
     onReturnClick() {
@@ -104,7 +116,13 @@ cc.Class({
     },
     // 停止录音
     stopRecordingWithGvoiceSDk() {
-        this.node.getChildByName("Recording").removeFromParent();
+        let RecordAniNode = null;
+        if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) == cc.dd.roomDeskType.Desk_3D){
+            RecordAniNode = this.node.getComponent("mj_gameScene").TimerFor3DNode.getChildByName("Recording");
+        }else {
+            RecordAniNode = this.node.getComponent("mj_gameScene").TimerFor2DNode.getChildByName("Recording");
+        }
+        RecordAniNode.removeFromParent();
         cc.dd.stopRecordingWithGvoice();
         cc.dd.soundMgr.resumeAllSounds();
         cc.dd.room._selfRecording = false;
@@ -343,5 +361,18 @@ cc.Class({
     // 茶馆进入牌桌的情况下，人数未满可以返回茶馆
     onClickExitToChaguan() {
         cc.dd.net.startEvent(cc.dd.gameCfg.EVENT.EVENT_CHAGUAN_LEAVE_MAJIONG_DESK_REP);
+    },
+    // 与语音相关的节点的隐藏与控制
+    yuyinRelatedNodeInteracted(interactable) {
+        if(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) == cc.dd.userEvName.USER_YUYIN_ON) {
+            this.RecordBTN.active = interactable;
+            this.disableRecordBTN.active = !interactable;
+            this.DuanyuBTN.active = interactable;
+            this.disableDuanyuBTN.active = !interactable;
+        }else {
+            this.RecordBTN.active = false;
+            this.DuanyuBTN.active = interactable;
+            this.disableDuanyuBTN.active = !interactable;
+        }
     },
 });

@@ -138,6 +138,7 @@ cc.Class({
             tooltip: "返回茶馆按钮",
         },
         callback: null,
+        yuyinArr: null, // 语音数组
     },
 
     // use this for initialization
@@ -148,6 +149,7 @@ cc.Class({
         cc.dd.soundMgr.playMusic("resources/Game/Sound/common/bg.mp3", true);
 
         this.initPlayerArr();
+        this.yuyinArr = [];
         let arrtemp =["Right","Left"];
         // 测试手牌
        // this.PlayerNode.getChildByName("Bottom").getComponent("PlayerSelf").createHandCard(cardArr);
@@ -158,7 +160,6 @@ cc.Class({
             this.node.getChildByName("Table").getComponent(cc.Sprite).spriteFrame = texturebg2d;
             this.TimerFor2DNode.active = false;
             this.TimerFor3DNode.active = true;
-            // this.JushuLabel.node.y = 60;
             arrtemp.forEach((item) => {
                 this.PlayerNode.getChildByName(item).getChildByName("ParentContainer").active = true;
             this.PlayerNode.getChildByName(item).getChildByName("ParentContainer2D").active = false;
@@ -180,8 +181,10 @@ cc.Class({
         cc.dd.net.setCallBack(this);
     },
     onDestroy() {
+        cc.dd.foriOSDestoryBatteryMonitor();
         cc.dd.room.roomserialnumber = null;
         this.unschedule(this.callback);
+        cc.dd.soundMgr.stopAllSound();
     },
 
     // 监听重连后的回调
@@ -196,24 +199,15 @@ cc.Class({
         cc.log("初始化玩家的列表init");
         this.playerArr.push(this.PlayerNode.getChildByName("Bottom"));
         this.PlayerNode.getChildByName("Bottom").localSeat = 1;
-        this.PlayerNode.getChildByName("Bottom").mesArr = [];
-        // this.PlayerNode.getChildByName("Bottom").outCardArr = [];
         this.PlayerNode.getChildByName("Bottom").outPengArr = [];
-        // this.PlayerNode.getChildByName("Bottom").outChiArr = [];
         this.playerArr.push(this.PlayerNode.getChildByName("Right"));
         this.PlayerNode.getChildByName("Right").localSeat = 2;
-        this.PlayerNode.getChildByName("Right").mesArr = [];
-        // this.PlayerNode.getChildByName("Right").outCardArr = [];
         this.PlayerNode.getChildByName("Right").outPengArr = [];
         this.playerArr.push(this.PlayerNode.getChildByName("Top"));
         this.PlayerNode.getChildByName("Top").localSeat = 3;
-        this.PlayerNode.getChildByName("Top").mesArr = [];
-        // this.PlayerNode.getChildByName("Top").outCardArr = [];
         this.PlayerNode.getChildByName("Top").outPengArr = [];
         this.playerArr.push(this.PlayerNode.getChildByName("Left"));
         this.PlayerNode.getChildByName("Left").localSeat = 4;
-        this.PlayerNode.getChildByName("Left").mesArr = [];
-        // this.PlayerNode.getChildByName("Left").outCardArr = [];
         this.PlayerNode.getChildByName("Left").outPengArr = [];
         cc.dd.room._playerNodeArr = this.playerArr;
     },
@@ -1124,64 +1118,79 @@ cc.Class({
         // cc.dd.invokeWXFriendShareCustumText(contentstr);
         cc.dd.invokeWXFriendShareCustumText(contentstr, this.roomPassword);
     },
-    // 给发言用户显示语音图标
+    // 收到语音消息广播，给发言用户显示语音图标
     onRecievedPlayerMessage(data) {
         cc.dd.roomEvent.setIsCache(false);
         let localSeat = null;
+        let item = null;
         if(data) {
-            localSeat = this.getLocalSeatByUserId(data.senduid);
-        }else {
-            localSeat = cc.dd.room._currentMessageSeatID;
-        }
-        if (localSeat) {
-            if(data) {
-                this.playerArr[localSeat-1].mesArr.push(data.voiceid); // 给他的语音数组赋值
-                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").active = true;
+            if(this.yuyinArr.length === 0) {
+                item = data;
+            }else {
+                item = this.yuyinArr[0];
             }
-            if(!cc.dd.room._hasMessageOnPlay) {
-                cc.dd.room._hasMessageOnPlay = true;
+            this.yuyinArr.push(data);
+            localSeat = this.getLocalSeatByUserId(item.senduid);
+            if (localSeat !== cc.dd.room._currentMessageSeatID) {
                 cc.dd.room._currentMessageSeatID = localSeat;
-                cc.dd.soundMgr.pauseAllSounds();
-                cc.dd.room._currentMessageID = this.playerArr[localSeat-1].mesArr[0];
-                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").getComponent(cc.Animation).play();
-                cc.dd.downloadAndPlayMessageWithMessageID(cc.dd.room._currentMessageID);
             }
+            this.showPlayingsign(item.voiceid);
+        }else {
+            item = this.yuyinArr[0];
+            localSeat = this.getLocalSeatByUserId(item.senduid);
+            if (localSeat !== cc.dd.room._currentMessageSeatID) {
+                cc.dd.room._currentMessageSeatID = localSeat;
+            }
+            this.showPlayingsign(item.voiceid);
         }
         cc.dd.roomEvent.setIsCache(true);
         cc.dd.roomEvent.notifyCacheList();
     },
-    // 成功播放完当前消息的回调的处理
-    didFinishPlayingCurrentMessage() { // 联续播放
-        const localSeat = cc.dd.room._currentMessageSeatID;
-        this.playerArr[localSeat-1].mesArr.splice(0,1);
-        this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").getComponent(cc.Animation).stop();
-        if(this.playerArr[localSeat-1].mesArr.length > 0) {
-            cc.dd.room._hasMessageOnPlay = false;
-            const nextlocalSeat = this.getLocalSeatByUserId(this.playerArr[localSeat-1].mesArr[0].senduid);
-            if(localSeat != nextlocalSeat) {
-                cc.dd.room._currentMessageSeatID = nextlocalSeat;
+    // 下载,播放语音消息
+    showPlayingsign(data) {
+        let localSeat = cc.dd.room._currentMessageSeatID;
+        if (localSeat) {
+            if(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) == cc.dd.userEvName.USER_YUYIN_ON) {
+                this.node.getComponent("desk_click").yuyinRelatedNodeInteracted(false);
+                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").active = true;
+                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").getComponent(cc.Animation).play();
+                cc.dd.soundMgr.pauseAllSounds();
+                cc.dd.downloadAndPlayMessageWithMessageID(data); // data.voiceid
+                this.yuyinArr.splice(0,1);
+            }else {
+                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("receiver_sclient").active = true;
+                this.node.getComponent("desk_click").yuyinRelatedNodeInteracted(false);
+                this.yuyinArr.splice(0,1);
+                this.scheduleOnce(() => {
+                    this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("receiver_sclient").active = false;
+                this.node.getComponent("desk_click").yuyinRelatedNodeInteracted(true);
+                if (this.yuyinArr.length > 0){
+                    this.onRecievedPlayerMessage();
+                }
+            },3);
             }
-            this.onRecievedPlayerMessage();
-        }else {
-            cc.dd.room._hasMessageOnPlay = false;
-            cc.dd.soundMgr.resumeAllSounds();
-            cc.dd.room._currentMessageSeatID = null;
-            cc.dd.room._currentMessageID = null;
-            this.scheduleOnce(function() {
-                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").active = false;
-                cc.dd.soundMgr.resumeAllSounds();
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnSound").active = true;
-                this.node.getChildByName("Table").getChildByName("Right").getChildByName("vodisablelayer").active = false;
-            }, 1.5);
         }
     },
-    onClickExchangeFangKa() { // 弃用
-        cc.dd.Reload.loadPrefab("Hall/Prefab/ChangeFanKa", (prefab) => {
-            const changePup = cc.instantiate(prefab);
-            this.node.addChild(changePup);
-        });
+    // 成功播放完当前消息的回调，的处理
+    didFinishPlayingCurrentMessage() { // 联续播放
+        cc.log(`成功播放完当前消息的回调，的处理,语音数组长度：${this.yuyinArr.length}，${cc.dd.room._currentMessageSeatID}`);
+        const localSeat = cc.dd.room._currentMessageSeatID;
+        this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").getComponent(cc.Animation).stop();
+        if(this.yuyinArr.length > 0) {
+            this.onRecievedPlayerMessage();
+            this.scheduleOnce(() => {
+                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").active = false;
+        }, 2);
+        }else {
+            cc.dd.soundMgr.resumeAllSounds();
+            cc.log("进入无消息排队的状态");
+            this.scheduleOnce(() => {
+                this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("message_receiver").active = false;
+            this.node.getComponent("desk_click").yuyinRelatedNodeInteracted(true);
+            cc.dd.soundMgr.resumeAllSounds();
+            cc.dd.room._currentMessageSeatID = null;
+        }, 2);
+        }
     },
     userDidOffline(data) {
         const localSeat = this.getLocalSeatByUserId(data.UID);
@@ -1211,26 +1220,32 @@ cc.Class({
         if(data) {
             localSeat = this.getLocalSeatByUserId(data.senduid);
         }
-        this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = true;
-        this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = false;
+        this.node.getComponent("desk_click").yuyinRelatedNodeInteracted(false);
         const emojinode = this.playerArr[localSeat-1].getChildByName("InfoBk").getChildByName("emoji");
         if(data.type === 1) {  // 短语
             cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
                 emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
-                emojinode.active = true;
-                cc.dd.playPhraseEffect(data.msgid);
-            });
+            emojinode.active = true;
+            cc.dd.playPhraseEffect(data.msgid);
+        });
         }else {  // 表情包
             cc.dd.Reload.loadAtlas("Game/Atlas/emojiAndPhrase", (atlas) => {
                 emojinode.getComponent(cc.Sprite).spriteFrame = atlas.getSpriteFrame(data.msgid);
-                emojinode.active = true;
-                emojinode.getComponent(cc.Animation).play();
-            });
+            emojinode.active = true;
+            emojinode.getComponent(cc.Animation).play();
+        });
         }
         this.scheduleOnce(() => {
             emojinode.active = false;
-        this.node.getChildByName("Table").getChildByName("Right").getChildByName("BtnEmoji").active = true;
-        this.node.getChildByName("Table").getChildByName("Right").getChildByName("emodisablelayer").active = false;
+            this.node.getComponent("desk_click").yuyinRelatedNodeInteracted(true);
         }, MOVE_TIME);
+    },
+    // 错误提示
+    showErrorTips(data) {
+        cc.dd.Reload.loadPrefab("Hall/Prefab/AlertView", (prefab) => {
+            const roomNotExitMes = cc.instantiate(prefab);
+            roomNotExitMes.getComponent("AlterViewScript").initInfoMes(data.errmsg);
+            this.node.addChild(roomNotExitMes);
+        });
     },
 });

@@ -188,6 +188,10 @@ cc.Class({
                 this.node.getComponent("mj_gameScene").showUserEmojiOrPhrase(data);
                 break;
             }
+            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REQ: { // 2016,用户发送的短语表情失败
+                this.node.getComponent("mj_gameScene").showErrorTips(data);
+                break;
+            }
             case cc.dd.gameCfg.EVENT.EVENT_ENTER_CHAGUAN_REQ: {
                 if (cc.dd.user.getChaGuan()) {
                     cc.dd.Reload.loadDir("DirRes", () => {
@@ -196,7 +200,15 @@ cc.Class({
                 }
                 break;
             }
-            default: {//showUserEmojiOrPhrase
+            case cc.dd.userEvName.USER_YUYIN_SWTICH_STATE_CHANGE: { // 语音开关状态发生改变
+                if(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) == cc.dd.userEvName.USER_YUYIN_ON) {
+                    this.node.getComponent("desk_click").RecordBTN.active = true;
+                }else {
+                    this.node.getComponent("desk_click").RecordBTN.active = false;
+                }
+                break;
+            }
+            default: {
                 cc.log(`unkown event: ${event}`);
             }
         }

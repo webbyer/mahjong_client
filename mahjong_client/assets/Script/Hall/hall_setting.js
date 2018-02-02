@@ -37,11 +37,11 @@ cc.Class({
         if (this.soundSlider) {
             this.soundSlider.progress = cc.dd.soundMgr.getSoundVolume();
         }
-        // if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) == cc.dd.userEvName.USER_YUYIN_OFF) {
-        //     this.yuyinSwitch.uncheck();
-        // }else {
-        //     this.yuyinSwitch.check();
-        // }
+        if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) == cc.dd.userEvName.USER_YUYIN_OFF) {
+            this.yuyinSwitch.uncheck();
+        }else {
+            this.yuyinSwitch.check();
+        }
         if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE) == cc.dd.roomDeskType.Desk_3D) {
             this.deskLayout.getChildByName("toggle3D").getComponent(cc.Toggle).check();
         }
@@ -102,14 +102,7 @@ cc.Class({
     },
     // 选择 2d/3d 桌面布局
     onChooseDeskTypeClick(event,customData) {
-        // if (!cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE)){
         cc.sys.localStorage.setItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE,customData);
-        // this.chooseVisable(customData);
-        // }
-        // if (customData != cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE)) {
-        //     cc.sys.localStorage.setItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE,customData);
-        //     this.chooseVisable(customData);
-        // }
         switch (customData) {
             case cc.dd.roomDeskType.Desk_2D: {
                 this.deskLayout.getChildByName("toggle3D").getComponent(cc.Toggle).isChecked = false;
@@ -125,7 +118,7 @@ cc.Class({
                 break;
             }
         }
-        cc.log(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE));
+        // cc.log(cc.sys.localStorage.getItem(cc.dd.userEvName.USER_DESK_TYPE_CHANGE));
     },
     chooseVisable(data) {
         switch (data) {

@@ -207,6 +207,9 @@ const MJEventManager = cc.Class({
                 if (msgData.noticeboard) {
                     cc.dd.user._noticeboard = msgData.noticeboard;
                 }
+                if (cc.sys.localStorage.getItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE) !== cc.dd.userEvName.USER_YUYIN_OFF) {
+                    cc.sys.localStorage.setItem(cc.dd.userEvName.USER_YUYIN_SWTICH_STATE,cc.dd.userEvName.USER_YUYIN_ON);
+                }
                 cc.dd.checkForNewVersion(msgData.iosversion,msgData.androidversion,msgData);
                 break;
             }
@@ -353,6 +356,10 @@ const MJEventManager = cc.Class({
                 break;
             }
             case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REQ: { // 收到用户发送的表情包广播
+                cc.dd.room.saveMsg(msgId,msgData);
+                break;
+            }
+            case cc.dd.gameCfg.EVENT.EVENT_USER_SENT_EMOJI_REP: { // 用户发送的表情包失败广播.2016
                 cc.dd.room.saveMsg(msgId,msgData);
                 break;
             }
